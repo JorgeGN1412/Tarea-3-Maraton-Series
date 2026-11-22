@@ -19,6 +19,8 @@ El proyecto no está listo para etiquetar ni entregar. No se ha iniciado la Part
 | Imports relativos | Se comprobó la existencia de sus archivos |
 
 | JSON | Archivos de configuración analizados |
+| Resumen estático final | 33 archivos JS, 53 JSX, 10 JSON y 97 imports locales; 0 errores |
+| Servidor estático de Series JS | Arrancó en puerto 5500; la comprobación HTTP fue bloqueada por EACCES al conectar a 127.0.0.1 |
 
 | Instalación npm | Bloqueada: ENOTFOUND registry.npmjs.org |
 
