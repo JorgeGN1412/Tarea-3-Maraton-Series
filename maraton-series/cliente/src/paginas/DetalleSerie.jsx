@@ -3,10 +3,13 @@ import { Link, useParams } from 'react-router';
 import { obtenerSerie } from '../api/seriesApi.js';
 export default function DetalleSerie() {
     const { id } = useParams(); // Lee el segmento dinámico de /series/:id.
+    // Una identidad distinta reinicia el estado de carga al cambiar de serie.
+    return <DetallePorId key={id} id={id} />;
+}
+function DetallePorId({ id }) {
     const [resultado, setResultado] = useState({ cargando: true });
     useEffect(() => {
         const controlador = new AbortController();
-        setResultado({ cargando: true });
         obtenerSerie(id, controlador.signal)
             .then(serie => setResultado({ serie }))
             .catch(error => { if (error.name !== 'AbortError')

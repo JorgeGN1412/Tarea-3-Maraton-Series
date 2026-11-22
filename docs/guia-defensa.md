@@ -96,7 +96,7 @@ Select proyecta campos y relaciones sin serializar grafos completos.
 
 ToListAsync es donde se ejecuta la consulta. Los id se convierten a texto en la respuesta.
 
-Las dos migraciones y su comprobación siguen pendientes.
+Las dos migraciones ya fueron generadas y aplicadas. Las respuestas HTTP de .NET todavía requieren verificación.
 
 
 

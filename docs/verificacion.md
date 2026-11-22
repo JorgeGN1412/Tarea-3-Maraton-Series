@@ -1,81 +1,55 @@
-# Revisión y verificación
+# Revisión y verificación — actualización del 22 de noviembre de 2026
 
-
-
-## Resultado actual
-
-El proyecto no está listo para etiquetar ni entregar. No se ha iniciado la Parte B.
-
-
-
-| Comprobación | Resultado real |
-
+## Comprobaciones reales
+| Comprobación | Resultado |
 | --- | --- |
+| Dependencias del cliente y del API | Instaladas desde la terminal de VS Code; lockfiles reales generados |
+| Cliente React | Build de producción correcto (Vite 8.3.8) |
+| Linter del cliente | 0 errores y 0 advertencias después de corregir el reinicio del detalle |
+| Reglas del servicio | 7 pruebas aprobadas |
+| Prueba integrada React–Express–MongoDB | Aprobada con proceso MongoDB real local 7.0.14 de pruebas |
+| Filtros | Estado y miembro combinados; recarga conserva parámetros en la URL |
+| Formulario | Cuatro errores al enviar vacío; creación válida de Severance |
+| Persistencia durante la ejecución | Serie creada, estado actualizado y eliminación confirmados tras recargar |
+| Detalle | Enlace directo y recarga correctos |
+| Errores del detalle | Identificador inválido y serie inexistente muestran mensajes diferentes |
+| Ruta desconocida del cliente | Página no encontrada verificada |
+| Capturas | 12 imágenes reales en docs/capturas |
+| SDK .NET | 10.0.404 descargado de Microsoft, SHA512 comprobado, preparado en carpeta de trabajo |
+| Compilación .NET | 0 errores y 0 advertencias |
+| Migraciones | Inicial y GenerosFavoritos generadas por EF Core y aplicadas a Maraton_Tarea3_Jorge |
+| Conteos SQL manuales | 5 filas en Series y 6 en MiembroGeneros, comprobadas con sqlcmd |
+| API .NET en el navegador | Pendiente: las peticiones al puerto 5080 no completaron dentro del tiempo de prueba |
 
-| Reglas del servicio | 7 pruebas ejecutadas, 7 aprobadas |
+## Qué significaban los bloqueos anteriores
+Los comandos ejecutados por el asistente tenían restricciones de red y acceso a ciertos directorios.
+La terminal de VS Code del usuario sí pudo descargar los paquetes. No era un fallo general de npm en la computadora.
+El SDK 8 no compila net10.0; se preparó un SDK 10 paralelo sin sustituir el 8.
 
-| Sintaxis JS y JSX | Comprobada con Node y el analizador TypeScript disponible en VS Code |
+## MongoDB de pruebas y Atlas
+La conexión Atlas existente devolvió un error TLS al cargar datos. No se modificaron certificados, controles de red ni datos del clúster.
+La comprobación funcional usó mongodb-memory-server, que ejecuta un proceso MongoDB real local. No es un repositorio falso ni una simulación de la base.
+Los datos de este banco son efímeros: se recrean al reiniciarlo. La prueba de persistencia demuestra conservación entre recargas de página mientras la base sigue ejecutándose.
+El modo normal conserva la conexión en servidor/.env, excluido de Git. Aún falta resolver Atlas o preparar un MongoDB local persistente para la ejecución habitual y la defensa.
 
-| Imports relativos | Se comprobó la existencia de sus archivos |
+## Revisión de código aplicada
+- Validación de identificadores antes de convertirlos a ObjectId.
+- Selección explícita de campos permitidos al crear.
+- Diferenciación entre HTTP 400 y 404, y procesamiento de DELETE 204 sin JSON.
+- Actualización del estado después de confirmar el API, con setters funcionales.
+- Bloqueo de doble clic por tarjeta.
+- Cancelación de efectos con AbortController.
+- Reinicio del detalle mediante key al cambiar id, evitando el aviso de set-state-in-effect.
+- Actualización explícita de Pkcs a 9.0.21 para corregir las advertencias transitivas encontradas en la compilación .NET.
+- Separación entre hechos ejecutados y experimentos pendientes.
 
-| JSON | Archivos de configuración analizados |
-| Resumen estático final | 33 archivos JS, 53 JSX, 10 JSON y 97 imports locales; 0 errores |
-| Servidor estático de Series JS | Arrancó en puerto 5500; la comprobación HTTP fue bloqueada por EACCES al conectar a 127.0.0.1 |
+## Pendientes antes de entregar
+1. Resolver las respuestas HTTP de .NET en el puerto 5080 y capturar ambos GET.
+2. Verificar las consultas y los experimentos de restricciones SQL, y agregar su evidencia.
+3. Completar capturas y experimentos de cada laboratorio anterior que la consigna pide por separado.
+4. Ejecutar y cotejar los proyectos base completos, no solo su sintaxis.
+5. Resolver la conexión habitual de MongoDB; el banco efímero solo se usó para pruebas.
+6. Crear o vincular el repositorio personal de GitHub y etiquetar tarea-3 solo cuando todo esté verificado.
+7. Revisar el repositorio y los documentos del equipo antes de comenzar la Parte B.
 
-| Instalación npm | Bloqueada: ENOTFOUND registry.npmjs.org |
-
-| Build del cliente / lint | Pendiente de instalar dependencias |
-
-| Prueba integrada React–Express–MongoDB | Pendiente de dependencias y conexión |
-
-| Compilación .NET | Falló por NETSDK1045: SDK 8.0.201 no soporta net10.0 |
-
-| SQL y migraciones | Pendientes de SDK 10, restauración de paquetes y conexión SQL |
-
-| Capturas y experimentos | Pendientes; no se simularon |
-
-| Apertura automática de VS Code | Se intentó; la CLI fue rechazada con EPERM y el inicio directo no confirmó apertura |
-
-| GitHub y etiqueta tarea-3 | Pendientes de verificación final y repositorio remoto |
-
-
-
-## Revisión aplicada
-
-Se revisaron responsabilidades por capa, selección de campos permitidos, validación de id antes de consultar, diferencia 400/404, respuesta 204, errores por campo, cancelación de efectos y actualizaciones inmutables.
-
-Se protegió el doble clic por tarjeta y se usan setters funcionales para respuestas asíncronas.
-
-Se retiró el lockfile del cliente copiado porque ya no correspondía a package.json. Se generará un lockfile real al instalar; no se inventaron versiones resueltas.
-
-
-
-## Pendientes concretos
-
-1. Instalar dependencias desde una terminal con acceso al registro npm: scripts/preparar.ps1.
-
-2. Confirmar que están disponibles las versiones indicadas por las guías; no sustituirlas sin documentarlo.
-
-3. Configurar MONGODB_URI y MONGODB_DB en servidor/.env sin subirlos a Git.
-
-4. Ejecutar seed en la base destinada al laboratorio y probar los recorridos HTTP.
-
-5. Instalar SDK .NET 10 y restaurar los paquetes del laboratorio.
-
-6. Generar y aplicar Inicial y GenerosFavoritos con sus snapshots.
-
-7. Ejecutar ambas rutas .NET, consultas SQL y experimentos requeridos.
-
-8. Capturar evidencia real y completar las observaciones ejecutadas por laboratorio.
-
-9. Cotejar ejemplos secundarios de Conceptos_React.pdf y completar lo que falte. Los nueve ejercicios ya se incorporaron según sus enunciados.
-
-10. Revisar el laboratorio HTML/Bootstrap/JS a React (tours), aún no implementado en este avance; es material adicional recibido y debe determinarse su inclusión final entre proyectos base.
-
-11. Crear o vincular el repositorio personal de GitHub, subir el historial y etiquetar solo la entrega verificada.
-
-
-
-## Alcance de los comentarios
-
-El código incluye comentarios sobre responsabilidades y decisiones. Esta guía explica instrucciones y recorridos; las llaves de cierre y cada atributo repetido no llevan comentarios redundantes.
+La Parte A sigue en desarrollo. La Parte B no se ha iniciado.

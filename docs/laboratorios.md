@@ -6,7 +6,7 @@
 
 
 
-Las observaciones siguientes distinguen explicaciones del comportamiento esperado y verificaciones realmente ejecutadas. No se han generado capturas ni afirmado experimentos en navegador sin ejecutar la aplicación. Ver verificacion.md para las pruebas realizadas y bloqueos.
+Se añadieron doce capturas reales y se probó el recorrido React–Express–MongoDB local. Las observaciones específicas de cada experimento conservan su estado pendiente cuando todavía no se ejecutó. Ver verificacion.md y capturas/README.md para los resultados actualizados.
 
 
 
@@ -22,7 +22,9 @@ Ejercicios implementados: tarjetas de técnicos; avisos; tabla de técnicos; té
 
 
 
-### Explique el recorrido
+#
+
+## Explique el recorrido
 
 
 
@@ -66,7 +68,9 @@ Se agregó consulta.html con filtro y contador; se conservaron HTML y JS del mat
 
 
 
-### Explique el recorrido
+#
+
+## Explique el recorrido
 
 
 
@@ -810,7 +814,7 @@ Código: `maraton-series/servidor-net`.
 
 
 
-Entidades, restricciones, favoritos y rutas escritas. Compilación, dos migraciones y ejecución SQL pendientes: SDK actual 8.0.201 no admite net10.0.
+Entidades, restricciones, favoritos y rutas escritas. Compilación aprobada con SDK 10.0.404, dos migraciones generadas y aplicadas a SQL Server. Las respuestas HTTP del servidor siguen en comprobación.
 
 
 

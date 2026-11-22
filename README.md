@@ -9,7 +9,7 @@ El código de partida proviene de los materiales facilitados por el docente.
 3. Servidor .NET: consultar maraton-series/servidor-net/README.md. Usa SQL Server y el puerto 5080.
 4. Proyectos base: `cd proyectos-base/conceptos-react`, `npm install`, `npm run dev`.
 
-Este avance no está listo para entrega: faltan instalación de dependencias, pruebas integradas, migraciones y capturas. El entorno actual bloquea la conexión a npm y a puertos locales; ver docs/verificacion.md.
+El cliente y el API ya se instalaron y se probaron con MongoDB real local de pruebas. Hay doce capturas reales y las dos migraciones .NET fueron generadas y aplicadas. La entrega aún requiere cerrar las verificaciones pendientes de docs/verificacion.md.
 
 El cliente completo trabaja con Express. El servidor .NET implementa las dos rutas GET del laboratorio.
 Los identificadores de SQL Server son números convertidos a texto; los de MongoDB son ObjectId convertidos a texto. Coinciden nombres y tipos del contrato, no los valores de los identificadores.
@@ -21,3 +21,6 @@ Los identificadores de SQL Server son números convertidos a texto; los de Mongo
 
 La Parte B se incorpora en el repositorio grupal del Innovation Hub después de revisar el Avance 2 del equipo.
 No se incluyen credenciales. La etiqueta tarea-3 se creará cuando se verifique la entrega completa.
+
+## Ejecución local usada en las pruebas
+En servidor: `npm run dev:local`. En cliente: `npm run dev`. Abrir http://127.0.0.1:5173. La base de este banco es efímera; ver servidor/PRUEBA_LOCAL.md.
