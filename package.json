@@ -1,12 +1,23 @@
 {
+
   "name": "tarea-3",
+
   "private": true,
+
   "type": "module",
+
   "scripts": {
+
     "check": "node scripts/comprobar.mjs",
+
     "test": "node --test maraton-series/servidor/test/servicio.test.js"
+
   },
+
   "devDependencies": {
+
     "typescript": "^5.8.3"
+
   }
+
 }

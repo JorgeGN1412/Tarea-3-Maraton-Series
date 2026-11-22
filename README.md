@@ -19,4 +19,3 @@ Los identificadores de SQL Server son números convertidos a texto; los de Mongo
 
 La Parte B se incorpora en el repositorio grupal del Innovation Hub después de revisar el Avance 2 del equipo.
 No se incluyen credenciales. La etiqueta tarea-3 se creará cuando se verifique la entrega completa.
-

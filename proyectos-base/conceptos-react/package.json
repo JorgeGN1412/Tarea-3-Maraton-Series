@@ -1,20 +1,39 @@
 {
+
   "name": "conceptos-react",
+
   "version": "1.0.0",
+
   "private": true,
+
   "type": "module",
+
   "scripts": {
+
     "dev": "vite --port 5174",
+
     "build": "vite build",
+
     "lint": "oxlint"
+
   },
+
   "dependencies": {
+
     "react": "^19.3.1",
+
     "react-dom": "^19.3.1"
+
   },
+
   "devDependencies": {
+
     "vite": "^8.3.5",
+
     "@vitejs/plugin-react": "^6.1.2",
+
     "oxlint": "^1.89.0"
+
   }
+
 }

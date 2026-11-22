@@ -120,3 +120,5 @@ pre {
   color: #e5e7eb;
   line-height: 1.5;
 }
+
+.menu{display:flex;gap:18px;padding:14px 0} label{display:block} input,select,textarea{font:inherit}
