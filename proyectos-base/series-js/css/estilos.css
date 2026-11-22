@@ -7,7 +7,9 @@ body {
 
 /* Tarjeta de una serie: se levanta un poco al pasar el mouse */
 .tarjeta-serie {
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
 }
 .tarjeta-serie:hover {
   transform: translateY(-3px);

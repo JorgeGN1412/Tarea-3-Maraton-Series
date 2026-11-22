@@ -1,22 +1,57 @@
-# Capturas reales del Maratón
+# Capturas reales
 
-Capturadas en el navegador al ejecutar React, Express y MongoDB real local de pruebas.
+Obtenidas de las aplicaciones ejecutándose. Las primeras doce muestran el banco inicial; 15 y 16 comprueban la persistencia. La 26 es una variante temporal que se retiró después de observarla.
 
-| Archivo | Evidencia |
-| --- | --- |
-| 01-inicio.png | Inicio y navegación |
-| 02-tablero.png | Cinco series iniciales y resumen 2/1/2 |
-| 03-filtro-viendo.png | /series?estado=Viendo; The Office |
-| 04-lista-vacia.png | /series?estado=Viendo&miembro=Ana; cero coincidencias |
-| 05-validacion.png | Cuatro mensajes junto a campos vacíos |
-| 06-serie-creada.png | Severance creada por Luis y conservada tras recarga |
-| 07-estado-persistente.png | Severance en Viendo tras actualizar y recargar |
-| 08-detalle.png | Detalle de Severance con género, temporadas, estado y miembro |
-| 09-eliminacion-verificada.png | Eliminación de la serie de prueba; quedan las cinco originales |
-| 10-id-invalido.png | /series/abc; error de identificador inválido |
-| 11-serie-inexistente.png | /series/650000000000000000000000; serie no encontrada |
-| 12-ruta-inexistente.png | /peliculas; 404 del router |
+[01-inicio.png](01-inicio.png)
 
-Base de las direcciones: http://127.0.0.1:5173.
-Las capturas del navegador muestran el contenido de la página; la dirección exacta se documenta en esta tabla.
-Faltan capturas de SQL, de los GET .NET y de algunos experimentos específicos por laboratorio.
+[02-tablero.png](02-tablero.png)
+
+[03-filtro-viendo.png](03-filtro-viendo.png)
+
+[04-lista-vacia.png](04-lista-vacia.png)
+
+[05-validacion.png](05-validacion.png)
+
+[06-serie-creada.png](06-serie-creada.png)
+
+[07-estado-persistente.png](07-estado-persistente.png)
+
+[08-detalle.png](08-detalle.png)
+
+[09-eliminacion-verificada.png](09-eliminacion-verificada.png)
+
+[10-id-invalido.png](10-id-invalido.png)
+
+[11-serie-inexistente.png](11-serie-inexistente.png)
+
+[12-ruta-inexistente.png](12-ruta-inexistente.png)
+
+[13-net-series.png](13-net-series.png)
+
+[14-net-miembros.png](14-net-miembros.png)
+
+[15-persistencia-reinicio.png](15-persistencia-reinicio.png)
+
+[16-borrado-tras-reinicio.png](16-borrado-tras-reinicio.png)
+
+[17-conceptos-react.png](17-conceptos-react.png)
+
+[18-solicitudes-react.png](18-solicitudes-react.png)
+
+[19-solicitudes-html.png](19-solicitudes-html.png)
+
+[20-tours-react.png](20-tours-react.png)
+
+[21-tours-html.png](21-tours-html.png)
+
+[22-series-js-busqueda.png](22-series-js-busqueda.png)
+
+[23-series-js-post-vacio.png](23-series-js-post-vacio.png)
+
+[24-tours-react-movil.png](24-tours-react-movil.png)
+
+[25-tours-html-movil.png](25-tours-html-movil.png)
+
+[26-variable-vs-estado.png](26-variable-vs-estado.png)
+
+[27-vscode-sin-errores.png](27-vscode-sin-errores.png)

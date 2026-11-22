@@ -1,7 +1,5 @@
 # Guía para explicar el código
 
-
-
 ## Cambiar estado
 
 1. TarjetaSerie recibe serie y onAvanzar como props.
@@ -22,15 +20,11 @@
 
 9. La respuesta 200 llega al cliente. El setter funcional sustituye solo la serie actualizada.
 
-
-
 ## Quitar
 
 Es el mismo recorrido, pero deleteOne elimina el documento y Express devuelve 204.
 
 pedir no intenta leer JSON en un 204. El filtro del setter elimina la tarjeta tras confirmar.
-
-
 
 ## Agregar
 
@@ -46,8 +40,6 @@ NuevaSerie usa useNavigate después de esperar la creación.
 
 Si hay un error, se conserva lo escrito y el formulario lo muestra.
 
-
-
 ## Filtros
 
 useSearchParams representa los filtros con estado y miembro en la dirección.
@@ -58,8 +50,6 @@ filter deriva la lista visible. Los conteos se calculan sobre todas las series.
 
 No existe otro useState para visibles ni conteos: duplicarlos permitiría desincronizarlos.
 
-
-
 ## Detalle
 
 useParams lee id. El efecto depende de id y se repite si cambia.
@@ -67,8 +57,6 @@ useParams lee id. El efecto depende de id y se repite si cambia.
 AbortController cancela la solicitud anterior. El catch ignora AbortError.
 
 El router maneja una página desconocida; el API maneja una serie inexistente.
-
-
 
 ## Capas
 
@@ -81,8 +69,6 @@ El router maneja una página desconocida; el API maneja una serie inexistente.
 - Repositorio: operaciones de MongoDB.
 
 - Middleware: errores con un contrato uniforme.
-
-
 
 ## .NET
 
@@ -97,8 +83,6 @@ Select proyecta campos y relaciones sin serializar grafos completos.
 ToListAsync es donde se ejecuta la consulta. Los id se convierten a texto en la respuesta.
 
 Las dos migraciones ya fueron generadas y aplicadas. Las respuestas HTTP de .NET todavía requieren verificación.
-
-
 
 ## Cómo leer una línea
 
@@ -121,8 +105,6 @@ Las dos migraciones ya fueron generadas y aplicadas. Las respuestas HTTP de .NET
 - {...props}: distribuye atributos de un objeto sobre el componente.
 
 - ? : y &&: decisiones sobre qué contenido mostrar.
-
-
 
 ## Límites de esta versión
 

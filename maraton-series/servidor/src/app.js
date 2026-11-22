@@ -11,15 +11,15 @@ import { crearRutasSeries } from './series/series.routes.js';
 import { rutaNoEncontrada, manejarErrores } from './middlewares/errores.js';
 // Recibe la base por parámetro: permite probar la aplicación sin abrir otro servidor.
 export function crearApp(db, origen) {
-    const app = express();
-    app.disable('x-powered-by');
-    app.use(cors({ origin: origen })); // Autoriza el origen de Vite.
-    app.use(express.json({ limit: '32kb' })); // Convierte JSON antes de llamar a las rutas.
-    const miembros = crearServicioMiembros(crearRepositorioMiembros(db));
-    const series = crearServicioSeries(crearRepositorioSeries(db), miembros);
-    app.use('/api/miembros', crearRutasMiembros(crearControladorMiembros(miembros)));
-    app.use('/api/series', crearRutasSeries(crearControladorSeries(series)));
-    app.use(rutaNoEncontrada); // Las rutas inexistentes se resuelven al final.
-    app.use(manejarErrores); // Los errores siempre usan el mismo contrato.
-    return app;
+  const app = express();
+  app.disable('x-powered-by');
+  app.use(cors({ origin: origen })); // Autoriza el origen de Vite.
+  app.use(express.json({ limit: '32kb' })); // Convierte JSON antes de llamar a las rutas.
+  const miembros = crearServicioMiembros(crearRepositorioMiembros(db));
+  const series = crearServicioSeries(crearRepositorioSeries(db), miembros);
+  app.use('/api/miembros', crearRutasMiembros(crearControladorMiembros(miembros)));
+  app.use('/api/series', crearRutasSeries(crearControladorSeries(series)));
+  app.use(rutaNoEncontrada); // Las rutas inexistentes se resuelven al final.
+  app.use(manejarErrores); // Los errores siempre usan el mismo contrato.
+  return app;
 }

@@ -1,6 +1,63 @@
 import { useState } from 'react';
-const iniciales = [{ id: 1, texto: 'Revisar impresora', hecha: false }, { id: 2, texto: 'Instalar Office', hecha: false }];
+const iniciales = [
+  { id: 1, texto: 'Revisar impresora', hecha: false },
+  { id: 2, texto: 'Instalar Office', hecha: true },
+];
 // Agregar: spread; cambiar: map; quitar: filter. Nunca se modifica el arreglo existente.
-export function Ejercicio() { const [tareas, setTareas] = useState(iniciales); const [texto, setTexto] = useState(''); function agregar(e) { e.preventDefault(); if (!texto.trim())
-    return; setTareas(xs => [...xs, { id: crypto.randomUUID(), texto: texto.trim(), hecha: false }]); setTexto(''); } return <form onSubmit={agregar}><label>Nueva tarea<input value={texto} onChange={e => setTexto(e.target.value)}/></label><button>Agregar</button>{!tareas.length && <p>No hay tareas.</p>}<ul>{tareas.map(t => <li key={t.id}><span className={t.hecha ? 'hecha' : ''}>{t.texto}</span><button type="button" onClick={() => setTareas(xs => xs.map(x => x.id === t.id ? { ...x, hecha: !x.hecha } : x))}>Hecha</button><button type="button" onClick={() => setTareas(xs => xs.filter(x => x.id !== t.id))}>Quitar</button></li>)}</ul></form>; }
-export function Ejemplo() { return <p>Las operaciones del ejercicio crean una referencia nueva sin alterar las demás tareas.</p>; }
+export function Ejercicio() {
+  const [tareas, setTareas] = useState(iniciales);
+  const [texto, setTexto] = useState('');
+  function agregar(e) {
+    e.preventDefault();
+    if (!texto.trim()) return;
+    setTareas((xs) => [...xs, { id: crypto.randomUUID(), texto: texto.trim(), hecha: false }]);
+    setTexto('');
+  }
+  return (
+    <form onSubmit={agregar}>
+      <label>
+        Nueva tarea
+        <input value={texto} onChange={(e) => setTexto(e.target.value)} />
+      </label>
+      <button>Agregar</button>
+      {!tareas.length && <p>No hay tareas.</p>}
+      <ul>
+        {tareas.map((t) => (
+          <li key={t.id}>
+            <span className={t.hecha ? 'hecha' : ''}>{t.texto}</span>
+            <button
+              type="button"
+              onClick={() =>
+                setTareas((xs) => xs.map((x) => (x.id === t.id ? { ...x, hecha: !x.hecha } : x)))
+              }
+            >
+              Hecha
+            </button>
+            <button
+              type="button"
+              onClick={() => setTareas((xs) => xs.filter((x) => x.id !== t.id))}
+            >
+              Quitar
+            </button>
+          </li>
+        ))}
+      </ul>
+    </form>
+  );
+}
+// Copiar un objeto conserva nombre cuando solo se actualiza disponible.
+export function Ejemplo() {
+  const [tecnico, setTecnico] = useState({ nombre: 'Ana', disponible: true });
+  return (
+    <>
+      <p>
+        {tecnico.nombre}: {tecnico.disponible ? 'Disponible' : 'Ocupada'}
+      </p>
+      <button
+        onClick={() => setTecnico((actual) => ({ ...actual, disponible: !actual.disponible }))}
+      >
+        Alternar disponibilidad de Ana
+      </button>
+    </>
+  );
+}

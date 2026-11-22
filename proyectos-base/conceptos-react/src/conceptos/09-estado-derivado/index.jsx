@@ -1,5 +1,47 @@
 import { useState } from 'react';
 import { solicitudes } from '../../data/solicitudes.js';
 // Lista visible y cantidades se recalculan; no se guardan copias en useState.
-export function Ejemplo() { return <p>Si se puede calcular desde el estado actual, no hace falta almacenarlo de nuevo.</p>; }
-export function Ejercicio() { const [lista, setLista] = useState(solicitudes); const [prioridad, setPrioridad] = useState('Todas'); const visibles = lista.filter(s => prioridad === 'Todas' || s.prioridad === prioridad); const pendientes = lista.filter(s => s.estado === 'Pendiente').length; return <><label>Prioridad<select value={prioridad} onChange={e => setPrioridad(e.target.value)}>{['Todas', 'Alta', 'Media', 'Baja'].map(x => <option key={x}>{x}</option>)}</select></label><p>Visibles: {visibles.length} de {lista.length}. Pendientes: {pendientes}.</p><ul>{visibles.map(s => <li key={s.id}>{s.titulo} · {s.estado}<button onClick={() => setLista(xs => xs.map(x => x.id === s.id ? { ...x, estado: x.estado === 'Pendiente' ? 'Resuelta' : 'Pendiente' } : x))}>Cambiar estado</button></li>)}</ul></>; }
+export function Ejemplo() {
+  return <Ejercicio />;
+}
+export function Ejercicio() {
+  const [lista, setLista] = useState(solicitudes);
+  const [prioridad, setPrioridad] = useState('Todas');
+  const visibles = lista.filter((s) => prioridad === 'Todas' || s.prioridad === prioridad);
+  const pendientes = lista.filter((s) => s.estado === 'Pendiente').length;
+  return (
+    <>
+      <label>
+        Prioridad
+        <select value={prioridad} onChange={(e) => setPrioridad(e.target.value)}>
+          {['Todas', 'Alta', 'Media', 'Baja'].map((x) => (
+            <option key={x}>{x}</option>
+          ))}
+        </select>
+      </label>
+      <p>
+        Visibles: {visibles.length} de {lista.length}. Pendientes: {pendientes}.
+      </p>
+      <ul>
+        {visibles.map((s) => (
+          <li key={s.id}>
+            {s.titulo} · {s.estado}
+            <button
+              onClick={() =>
+                setLista((xs) =>
+                  xs.map((x) =>
+                    x.id === s.id
+                      ? { ...x, estado: x.estado === 'Pendiente' ? 'Resuelta' : 'Pendiente' }
+                      : x,
+                  ),
+                )
+              }
+            >
+              Cambiar estado
+            </button>
+          </li>
+        ))}
+      </ul>
+    </>
+  );
+}

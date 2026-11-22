@@ -1,0 +1,37 @@
+/* La misma hoja se conserva al migrar a React. */
+:root {
+  --verde-principal: #1b5e20;
+  --verde-claro: #43a047;
+}
+.bg-verde {
+  background-color: var(--verde-principal);
+}
+.hero {
+  min-height: 70vh;
+  background:
+    linear-gradient(#0008, #0008),
+    url('https://picsum.photos/seed/costarica/1600/900') center/cover;
+  background-color: #294d35;
+}
+.card-tour {
+  border: none;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+.card-tour:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px #0003;
+}
+.card-img-top {
+  height: 200px;
+  object-fit: cover;
+}
+.precio {
+  color: var(--verde-principal);
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+html {
+  scroll-padding-top: 5rem;
+}

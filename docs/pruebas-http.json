@@ -1,0 +1,479 @@
+{
+  "fecha": "2026-11-22T23:17:06.135Z",
+  "aprobada": true,
+  "resultados": [
+    {
+      "ruta": "/miembros",
+      "metodo": "GET",
+      "estado": 200,
+      "cuerpo": [
+        {
+          "_id": "650000000000000000000001",
+          "nombre": "Ana"
+        },
+        {
+          "_id": "650000000000000000000004",
+          "nombre": "Diego"
+        },
+        {
+          "_id": "650000000000000000000002",
+          "nombre": "Luis"
+        },
+        {
+          "_id": "650000000000000000000003",
+          "nombre": "Sofía"
+        }
+      ]
+    },
+    {
+      "ruta": "/series",
+      "metodo": "GET",
+      "estado": 200,
+      "cuerpo": [
+        {
+          "estado": "Vista",
+          "genero": "Ciencia ficción",
+          "temporadas": 3,
+          "titulo": "Dark",
+          "_id": "660000000000000000000001",
+          "miembroId": "650000000000000000000001",
+          "miembro": "Ana"
+        },
+        {
+          "estado": "Viendo",
+          "genero": "Comedia",
+          "temporadas": 9,
+          "titulo": "The Office",
+          "_id": "660000000000000000000002",
+          "miembroId": "650000000000000000000002",
+          "miembro": "Luis"
+        },
+        {
+          "estado": "Por ver",
+          "genero": "Animación",
+          "temporadas": 2,
+          "titulo": "Arcane",
+          "_id": "660000000000000000000003",
+          "miembroId": "650000000000000000000003",
+          "miembro": "Sofía"
+        },
+        {
+          "estado": "Vista",
+          "genero": "Drama",
+          "temporadas": 1,
+          "titulo": "Chernobyl",
+          "_id": "660000000000000000000004",
+          "miembroId": "650000000000000000000004",
+          "miembro": "Diego"
+        },
+        {
+          "estado": "Por ver",
+          "genero": "Documental",
+          "temporadas": 3,
+          "titulo": "Planeta Tierra",
+          "_id": "660000000000000000000005",
+          "miembroId": "650000000000000000000001",
+          "miembro": "Ana"
+        }
+      ]
+    },
+    {
+      "ruta": "/no-existe",
+      "metodo": "GET",
+      "estado": 404,
+      "cuerpo": {
+        "error": {
+          "codigo": "RUTA_NO_ENCONTRADA",
+          "mensaje": "No existe GET /api/no-existe"
+        }
+      }
+    },
+    {
+      "ruta": "/series/no-es-id",
+      "metodo": "GET",
+      "estado": 400,
+      "cuerpo": {
+        "error": {
+          "codigo": "ID_INVALIDO",
+          "mensaje": "El identificador no es válido."
+        }
+      }
+    },
+    {
+      "ruta": "/series/ffffffffffffffffffffffff",
+      "metodo": "GET",
+      "estado": 404,
+      "cuerpo": {
+        "error": {
+          "codigo": "NO_ENCONTRADA",
+          "mensaje": "La serie no existe."
+        }
+      }
+    },
+    {
+      "ruta": "/series",
+      "metodo": "POST",
+      "estado": 400,
+      "cuerpo": {
+        "error": {
+          "codigo": "JSON_INVALIDO",
+          "mensaje": "El cuerpo debe ser JSON válido."
+        }
+      }
+    },
+    {
+      "ruta": "/series",
+      "metodo": "POST",
+      "estado": 400,
+      "cuerpo": {
+        "error": {
+          "codigo": "DATOS_INVALIDOS",
+          "mensaje": "Revise los datos.",
+          "detalles": {
+            "temporadas": "Indique un entero entre 1 y 30."
+          }
+        }
+      }
+    },
+    {
+      "ruta": "/series",
+      "metodo": "POST",
+      "estado": 400,
+      "cuerpo": {
+        "error": {
+          "codigo": "DATOS_INVALIDOS",
+          "mensaje": "Revise los datos.",
+          "detalles": {
+            "temporadas": "Indique un entero entre 1 y 30."
+          }
+        }
+      }
+    },
+    {
+      "ruta": "/series",
+      "metodo": "POST",
+      "estado": 400,
+      "cuerpo": {
+        "error": {
+          "codigo": "DATOS_INVALIDOS",
+          "mensaje": "Revise los datos.",
+          "detalles": {
+            "temporadas": "Indique un entero entre 1 y 30."
+          }
+        }
+      }
+    },
+    {
+      "ruta": "/series",
+      "metodo": "POST",
+      "estado": 400,
+      "cuerpo": {
+        "error": {
+          "codigo": "DATOS_INVALIDOS",
+          "mensaje": "Revise los datos.",
+          "detalles": {
+            "temporadas": "Indique un entero entre 1 y 30."
+          }
+        }
+      }
+    },
+    {
+      "ruta": "/series",
+      "metodo": "POST",
+      "estado": 400,
+      "cuerpo": {
+        "error": {
+          "codigo": "DATOS_INVALIDOS",
+          "mensaje": "Revise los datos.",
+          "detalles": {
+            "miembroId": "El miembro no existe."
+          }
+        }
+      }
+    },
+    {
+      "ruta": "/series",
+      "metodo": "POST",
+      "estado": 201,
+      "cuerpo": {
+        "titulo": "Integración temporal",
+        "genero": "Drama",
+        "temporadas": 1,
+        "estado": "Por ver",
+        "_id": "6b0377f2d35ed0da2581f56c",
+        "miembroId": "650000000000000000000001",
+        "miembro": "Ana"
+      }
+    },
+    {
+      "ruta": "/series/6b0377f2d35ed0da2581f56c",
+      "metodo": "GET",
+      "estado": 200,
+      "cuerpo": {
+        "titulo": "Integración temporal",
+        "genero": "Drama",
+        "temporadas": 1,
+        "estado": "Por ver",
+        "_id": "6b0377f2d35ed0da2581f56c",
+        "miembroId": "650000000000000000000001",
+        "miembro": "Ana"
+      }
+    },
+    {
+      "ruta": "/series/6b0377f2d35ed0da2581f56c/estado",
+      "metodo": "PATCH",
+      "estado": 400,
+      "cuerpo": {
+        "error": {
+          "codigo": "DATOS_INVALIDOS",
+          "mensaje": "Estado no válido.",
+          "detalles": {
+            "estado": "Elija Por ver, Viendo o Vista."
+          }
+        }
+      }
+    },
+    {
+      "ruta": "/series/6b0377f2d35ed0da2581f56c/estado",
+      "metodo": "PATCH",
+      "estado": 200,
+      "cuerpo": {
+        "titulo": "Integración temporal",
+        "genero": "Drama",
+        "temporadas": 1,
+        "estado": "Viendo",
+        "_id": "6b0377f2d35ed0da2581f56c",
+        "miembroId": "650000000000000000000001",
+        "miembro": "Ana"
+      }
+    },
+    {
+      "ruta": "/series/6b0377f2d35ed0da2581f56c",
+      "metodo": "GET",
+      "estado": 200,
+      "cuerpo": {
+        "titulo": "Integración temporal",
+        "genero": "Drama",
+        "temporadas": 1,
+        "estado": "Viendo",
+        "_id": "6b0377f2d35ed0da2581f56c",
+        "miembroId": "650000000000000000000001",
+        "miembro": "Ana"
+      }
+    },
+    {
+      "ruta": "/series/6b0377f2d35ed0da2581f56c/estado",
+      "metodo": "PATCH",
+      "estado": 200,
+      "cuerpo": {
+        "titulo": "Integración temporal",
+        "genero": "Drama",
+        "temporadas": 1,
+        "estado": "Vista",
+        "_id": "6b0377f2d35ed0da2581f56c",
+        "miembroId": "650000000000000000000001",
+        "miembro": "Ana"
+      }
+    },
+    {
+      "ruta": "/series/6b0377f2d35ed0da2581f56c",
+      "metodo": "GET",
+      "estado": 200,
+      "cuerpo": {
+        "titulo": "Integración temporal",
+        "genero": "Drama",
+        "temporadas": 1,
+        "estado": "Vista",
+        "_id": "6b0377f2d35ed0da2581f56c",
+        "miembroId": "650000000000000000000001",
+        "miembro": "Ana"
+      }
+    },
+    {
+      "ruta": "/series/6b0377f2d35ed0da2581f56c/estado",
+      "metodo": "PATCH",
+      "estado": 200,
+      "cuerpo": {
+        "titulo": "Integración temporal",
+        "genero": "Drama",
+        "temporadas": 1,
+        "estado": "Por ver",
+        "_id": "6b0377f2d35ed0da2581f56c",
+        "miembroId": "650000000000000000000001",
+        "miembro": "Ana"
+      }
+    },
+    {
+      "ruta": "/series/6b0377f2d35ed0da2581f56c",
+      "metodo": "GET",
+      "estado": 200,
+      "cuerpo": {
+        "titulo": "Integración temporal",
+        "genero": "Drama",
+        "temporadas": 1,
+        "estado": "Por ver",
+        "_id": "6b0377f2d35ed0da2581f56c",
+        "miembroId": "650000000000000000000001",
+        "miembro": "Ana"
+      }
+    },
+    {
+      "ruta": "/series/6b0377f2d35ed0da2581f56c/estado",
+      "metodo": "PATCH",
+      "estado": 200,
+      "cuerpo": {
+        "titulo": "Integración temporal",
+        "genero": "Drama",
+        "temporadas": 1,
+        "estado": "Por ver",
+        "_id": "6b0377f2d35ed0da2581f56c",
+        "miembroId": "650000000000000000000001",
+        "miembro": "Ana"
+      }
+    },
+    {
+      "ruta": "/series/6b0377f2d35ed0da2581f56c",
+      "metodo": "DELETE",
+      "estado": 204,
+      "cuerpo": null
+    },
+    {
+      "ruta": "/series/6b0377f2d35ed0da2581f56c",
+      "metodo": "DELETE",
+      "estado": 404,
+      "cuerpo": {
+        "error": {
+          "codigo": "NO_ENCONTRADA",
+          "mensaje": "La serie no existe."
+        }
+      }
+    },
+    {
+      "ruta": "/series",
+      "metodo": "GET",
+      "estado": 200,
+      "cuerpo": [
+        {
+          "estado": "Vista",
+          "genero": "Ciencia ficción",
+          "temporadas": 3,
+          "titulo": "Dark",
+          "_id": "660000000000000000000001",
+          "miembroId": "650000000000000000000001",
+          "miembro": "Ana"
+        },
+        {
+          "estado": "Viendo",
+          "genero": "Comedia",
+          "temporadas": 9,
+          "titulo": "The Office",
+          "_id": "660000000000000000000002",
+          "miembroId": "650000000000000000000002",
+          "miembro": "Luis"
+        },
+        {
+          "estado": "Por ver",
+          "genero": "Animación",
+          "temporadas": 2,
+          "titulo": "Arcane",
+          "_id": "660000000000000000000003",
+          "miembroId": "650000000000000000000003",
+          "miembro": "Sofía"
+        },
+        {
+          "estado": "Vista",
+          "genero": "Drama",
+          "temporadas": 1,
+          "titulo": "Chernobyl",
+          "_id": "660000000000000000000004",
+          "miembroId": "650000000000000000000004",
+          "miembro": "Diego"
+        },
+        {
+          "estado": "Por ver",
+          "genero": "Documental",
+          "temporadas": 3,
+          "titulo": "Planeta Tierra",
+          "_id": "660000000000000000000005",
+          "miembroId": "650000000000000000000001",
+          "miembro": "Ana"
+        }
+      ]
+    },
+    {
+      "ruta": "/miembros",
+      "metodo": "GET",
+      "estado": 200,
+      "cuerpo": [
+        {
+          "_id": "1",
+          "nombre": "Ana"
+        },
+        {
+          "_id": "4",
+          "nombre": "Diego"
+        },
+        {
+          "_id": "2",
+          "nombre": "Luis"
+        },
+        {
+          "_id": "3",
+          "nombre": "Sofía"
+        }
+      ]
+    },
+    {
+      "ruta": "/series",
+      "metodo": "GET",
+      "estado": 200,
+      "cuerpo": [
+        {
+          "_id": "1",
+          "titulo": "Dark",
+          "genero": "Ciencia ficción",
+          "temporadas": 3,
+          "estado": "Vista",
+          "miembroId": "1",
+          "miembro": "Ana"
+        },
+        {
+          "_id": "2",
+          "titulo": "The Office",
+          "genero": "Comedia",
+          "temporadas": 9,
+          "estado": "Viendo",
+          "miembroId": "2",
+          "miembro": "Luis"
+        },
+        {
+          "_id": "3",
+          "titulo": "Arcane",
+          "genero": "Animación",
+          "temporadas": 2,
+          "estado": "Por ver",
+          "miembroId": "3",
+          "miembro": "Sofía"
+        },
+        {
+          "_id": "4",
+          "titulo": "Chernobyl",
+          "genero": "Drama",
+          "temporadas": 1,
+          "estado": "Vista",
+          "miembroId": "4",
+          "miembro": "Diego"
+        },
+        {
+          "_id": "5",
+          "titulo": "Planeta Tierra",
+          "genero": "Documental",
+          "temporadas": 3,
+          "estado": "Por ver",
+          "miembroId": "1",
+          "miembro": "Ana"
+        }
+      ]
+    }
+  ]
+}

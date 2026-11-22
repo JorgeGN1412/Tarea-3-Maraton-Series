@@ -30,7 +30,7 @@ try {
  }
 } finally {
  $taskFile=Join-Path $taskRoot 'docs/diagnostico-net.json'
- $taskResultados | ConvertTo-Json -Depth 6 | Set-Content -LiteralPath $taskFile -Encoding utf8
+ [System.IO.File]::WriteAllText($taskFile, ($taskResultados | ConvertTo-Json -Depth 6), (New-Object System.Text.UTF8Encoding($false)))
  Write-Host "Diagnóstico guardado en $taskFile"
  Write-Host "Proceso de prueba: $($taskProcess.Id). Logs: $taskLogs"
  $taskResultados | ConvertTo-Json -Depth 6

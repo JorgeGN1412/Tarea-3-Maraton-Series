@@ -1,2 +1,11 @@
-export default function FichaTecnico({ tecnico }) { if (!tecnico)
-    return <p>Seleccione un técnico.</p>; return <article><h4>{tecnico.nombre}</h4><p>{tecnico.area} · {tecnico.extension} · {tecnico.disponible ? 'Disponible' : 'Ocupado'}</p></article>; }
+export default function FichaTecnico({ tecnico }) {
+  if (!tecnico) return <p>Seleccione un técnico.</p>;
+  return (
+    <article>
+      <h4>{tecnico.nombre}</h4>
+      <p>
+        {tecnico.area} · {tecnico.extension} · {tecnico.disponible ? 'Disponible' : 'Ocupado'}
+      </p>
+    </article>
+  );
+}

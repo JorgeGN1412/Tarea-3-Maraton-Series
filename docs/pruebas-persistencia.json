@@ -1,0 +1,11 @@
+{
+  "fecha": "2026-11-22",
+  "api": "http://127.0.0.1:3001/api",
+  "seriePrueba": "6b036e813e8afc9e8e00a2d6",
+  "procesoAntes": 46704,
+  "procesoDespuesCreacion": 22484,
+  "procesoDespuesBorrado": 29356,
+  "creacionConservada": true,
+  "borradoConservado": true,
+  "capturas": ["15-persistencia-reinicio.png", "16-borrado-tras-reinicio.png"]
+}

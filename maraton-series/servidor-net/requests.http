@@ -1,4 +1,4 @@
-@api = http://localhost:5080/api
+@api = http://127.0.0.1:5090/api
 ### Miembros: 200
 GET {{api}}/miembros
 ### Series: 200

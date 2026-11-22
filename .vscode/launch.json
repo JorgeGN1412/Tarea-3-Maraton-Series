@@ -1,0 +1,95 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Maraton — API MongoDB persistente",
+      "program": "${workspaceFolder}/maraton-series/servidor/scripts/iniciar-local.js",
+      "cwd": "${workspaceFolder}/maraton-series/servidor",
+      "console": "internalConsole",
+      "skipFiles": ["<node_internals>/**"]
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Maraton — cliente React",
+      "program": "${workspaceFolder}/maraton-series/cliente/node_modules/vite/bin/vite.js",
+      "args": ["--host", "127.0.0.1", "--port", "5173"],
+      "cwd": "${workspaceFolder}/maraton-series/cliente",
+      "console": "internalConsole",
+      "skipFiles": ["<node_internals>/**"]
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Conceptos React",
+      "program": "${workspaceFolder}/maraton-series/cliente/node_modules/vite/bin/vite.js",
+      "args": ["--host", "127.0.0.1", "--port", "5174"],
+      "cwd": "${workspaceFolder}/proyectos-base/conceptos-react",
+      "console": "internalConsole",
+      "skipFiles": ["<node_internals>/**"]
+    },
+    {
+      "type": "coreclr",
+      "request": "launch",
+      "name": "Verificar SQL del laboratorio",
+      "program": "${workspaceFolder}/tests/VerificacionSql/bin/Debug/net10.0/VerificacionSql.exe",
+      "cwd": "${workspaceFolder}",
+      "console": "internalConsole",
+      "env": {
+        "DOTNET_ROOT": "${workspaceFolder}/../work/dotnet10"
+      }
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Verificar HTTP",
+      "program": "${workspaceFolder}/scripts/verificar-http.mjs",
+      "cwd": "${workspaceFolder}",
+      "console": "internalConsole"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Preparar y compilar bases",
+      "program": "${workspaceFolder}/scripts/preparar-bases.mjs",
+      "cwd": "${workspaceFolder}",
+      "console": "internalConsole"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Series JavaScript",
+      "program": "${workspaceFolder}/proyectos-base/series-js/servidor-local.js",
+      "cwd": "${workspaceFolder}",
+      "console": "internalConsole"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Solicitudes React",
+      "program": "${workspaceFolder}/proyectos-base/solicitudes/parte2-react/node_modules/vite/bin/vite.js",
+      "args": ["--host", "127.0.0.1", "--port", "5175"],
+      "cwd": "${workspaceFolder}/proyectos-base/solicitudes/parte2-react",
+      "console": "internalConsole"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Proyectos HTML",
+      "program": "${workspaceFolder}/scripts/iniciar-html.mjs",
+      "cwd": "${workspaceFolder}",
+      "console": "internalConsole"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Pura Vida Tours React",
+      "program": "${workspaceFolder}/proyectos-base/pura-vida-tours/parte2-react/node_modules/vite/bin/vite.js",
+      "args": ["--host", "127.0.0.1", "--port", "5176"],
+      "cwd": "${workspaceFolder}/proyectos-base/pura-vida-tours/parte2-react",
+      "console": "internalConsole"
+    }
+  ]
+}

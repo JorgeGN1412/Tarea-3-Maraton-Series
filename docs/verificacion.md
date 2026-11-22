@@ -1,55 +1,69 @@
-# Revisión y verificación — actualización del 22 de noviembre de 2026
+# Revisión y verificación — 22 de noviembre de 2026
 
-## Comprobaciones reales
-| Comprobación | Resultado |
-| --- | --- |
-| Dependencias del cliente y del API | Instaladas desde la terminal de VS Code; lockfiles reales generados |
-| Cliente React | Build de producción correcto (Vite 8.3.8) |
-| Linter del cliente | 0 errores y 0 advertencias después de corregir el reinicio del detalle |
-| Reglas del servicio | 7 pruebas aprobadas |
-| Prueba integrada React–Express–MongoDB | Aprobada con proceso MongoDB real local 7.0.14 de pruebas |
-| Filtros | Estado y miembro combinados; recarga conserva parámetros en la URL |
-| Formulario | Cuatro errores al enviar vacío; creación válida de Severance |
-| Persistencia durante la ejecución | Serie creada, estado actualizado y eliminación confirmados tras recargar |
-| Detalle | Enlace directo y recarga correctos |
-| Errores del detalle | Identificador inválido y serie inexistente muestran mensajes diferentes |
-| Ruta desconocida del cliente | Página no encontrada verificada |
-| Capturas | 12 imágenes reales en docs/capturas |
-| SDK .NET | 10.0.404 descargado de Microsoft, SHA512 comprobado, preparado en carpeta de trabajo |
-| Compilación .NET | 0 errores y 0 advertencias |
-| Migraciones | Inicial y GenerosFavoritos generadas por EF Core y aplicadas a Maraton_Tarea3_Jorge |
-| Conteos SQL manuales | 5 filas en Series y 6 en MiembroGeneros, comprobadas con sqlcmd |
-| API .NET | Verificada desde la terminal normal: raíz, GET miembros y GET series devolvieron 200 en el puerto 5090; 4 miembros y 5 series con identificadores de texto. Evidencia: diagnostico-net.json |
+## Resultados ejecutados
 
-## Qué significaban los bloqueos anteriores
-Los comandos ejecutados por el asistente tenían restricciones de red y acceso a ciertos directorios.
-La terminal de VS Code del usuario sí pudo descargar los paquetes. No era un fallo general de npm en la computadora.
-El SDK 8 no compila net10.0; se preparó un SDK 10 paralelo sin sustituir el 8.
+| Comprobación          | Resultado                                                                            | Evidencia                                               |
+| --------------------- | ------------------------------------------------------------------------------------ | ------------------------------------------------------- |
+| Servicio Express      | Siete pruebas aprobadas                                                              | npm test                                                |
+| Integración HTTP real | CRUD completo; ids; errores 400, 404 y DELETE 204                                    | pruebas-http.json                                       |
+| React acumulativo     | Filtros combinados, formulario, detalle, errores y rutas                             | Capturas 01–12                                          |
+| Persistencia MongoDB  | Creación y borrado se conservaron en reinicios distintos                             | pruebas-persistencia.json y capturas 15–16              |
+| Cliente React         | Lint sin errores; build de producción aprobado                                       | Vite 8.3.8                                              |
+| Proyectos base        | Instalados y compilados Conceptos, Solicitudes y Tours; linter de Conceptos aprobado | pruebas-bases.json                                      |
+| Conceptos React       | Estado, pausa, lista inmutable, ficha y disponibilidad probados en navegador         | Captura 17                                              |
+| Solicitudes           | Composición React y registro/consulta HTML con localStorage                          | Capturas 18–19                                          |
+| Tours                 | HTML y React con tres tarjetas y cuatro filas                                        | Capturas 20–21                                          |
+| Series JS             | Consulta real a TVmaze con resultados, carga y vacío                                 | Captura 22                                              |
+| .NET                  | GET miembros y series con HTTP 200; cuatro miembros y cinco series                   | diagnostico-net.json; pruebas-http.json; capturas 13–14 |
+| Compilación .NET      | SDK 10.0.404; cero errores y cero advertencias                                       | Compilación del servidor y del verificador SQL          |
+| SQL y migraciones     | Dos migraciones aplicadas; cinco series, cuatro miembros, seis favoritos             | pruebas-sql.json                                        |
+| Restricciones SQL     | FK 547, UNIQUE 2601, CHECK 547 y RESTRICT 547                                        | pruebas-sql.json                                        |
+| Modelo sin migración  | EF rechazó el cambio 100 → 120 con PendingModelChangesWarning                        | pruebas-sql.json                                        |
+| Reconstrucción        | Base aislada creada con ambas migraciones y eliminada al terminar                    | pruebas-sql.json                                        |
 
-## MongoDB de pruebas y Atlas
-La conexión Atlas existente devolvió un error TLS al cargar datos. No se modificaron certificados, controles de red ni datos del clúster.
-La comprobación funcional usó mongodb-memory-server, que ejecuta un proceso MongoDB real local. No es un repositorio falso ni una simulación de la base.
-Los datos de este banco son efímeros: se recrean al reiniciarlo. La prueba de persistencia demuestra conservación entre recargas de página mientras la base sigue ejecutándose.
-El modo normal conserva la conexión en servidor/.env, excluido de Git. Aún falta resolver Atlas o preparar un MongoDB local persistente para la ejecución habitual y la defensa.
+## Revisión de código
 
-## Revisión de código aplicada
-- Validación de identificadores antes de convertirlos a ObjectId.
-- Selección explícita de campos permitidos al crear.
-- Diferenciación entre HTTP 400 y 404, y procesamiento de DELETE 204 sin JSON.
-- Actualización del estado después de confirmar el API, con setters funcionales.
-- Bloqueo de doble clic por tarjeta.
-- Cancelación de efectos con AbortController.
-- Reinicio del detalle mediante key al cambiar id, evitando el aviso de set-state-in-effect.
-- Actualización explícita de Pkcs a 9.0.21 para corregir las advertencias transitivas encontradas en la compilación .NET.
-- Separación entre hechos ejecutados y experimentos pendientes.
+- Se validan ids antes de convertirlos a ObjectId.
+- El servidor selecciona campos permitidos y fija el estado inicial Por ver.
+- Se distinguen formato inválido, recurso inexistente y errores por campo.
+- DELETE 204 termina la respuesta y el cliente evita llamar json() sin cuerpo.
+- map/filter y setters funcionales conservan la inmutabilidad y las actualizaciones vigentes.
+- Un Set evita operaciones duplicadas sobre la misma tarjeta antes del siguiente render.
+- Los efectos se cancelan al desmontar; AbortError no se muestra como error de conexión.
+- El detalle se identifica con key={id}, evitando reinicios síncronos dentro del efecto.
+- El bootstrap local conserva WiredTiger y una marca de inicialización evita resucitar datos borrados.
+- Se excluyen archivos de la base del análisis de sintaxis y del repositorio.
+- Se corrigió la dependencia transitiva Pkcs a 9.0.21 y se conserva formato legible con Prettier.
 
-## Pendientes antes de entregar
-1. Unificar el arranque habitual de .NET en el puerto documentado y capturar ambos GET. Los dos GET ya están verificados en 5090; revisar la instancia anterior de 5080 sin atribuirle una causa no comprobada.
-2. Verificar las consultas y los experimentos de restricciones SQL, y agregar su evidencia.
-3. Completar capturas y experimentos de cada laboratorio anterior que la consigna pide por separado.
-4. Ejecutar y cotejar los proyectos base completos, no solo su sintaxis.
-5. Resolver la conexión habitual de MongoDB; el banco efímero solo se usó para pruebas.
-6. Crear o vincular el repositorio personal de GitHub y etiquetar tarea-3 solo cuando todo esté verificado.
-7. Revisar el repositorio y los documentos del equipo antes de comenzar la Parte B.
+## Entorno y límites observados
 
-La Parte A sigue en desarrollo. La Parte B no se ha iniciado.
+El acceso del asistente por terminal tiene restricciones de red y tuberías.
+Los procesos iniciados normalmente desde VS Code sí pudieron instalar paquetes,
+consultar los API y conectar SQL Server. No se cambiaron firewall ni certificados.
+
+Atlas devolvió un error TLS. Para la ejecución habitual se dejó MongoDB real
+local con persistencia en disco y se verificó tras reiniciar; Atlas ya no es
+un requisito para ejecutar este proyecto en este equipo.
+
+El SDK global del equipo es 8. La compilación válida usa el SDK 10 paralelo.
+El editor inicial seleccionaba 8 y mostraba NETSDK1045. Se abrió una instancia
+del editor con entorno SDK 10 y perfil separado: cargó ambos proyectos para
+IntelliSense y mostró No Problems. El PATH global y el perfil usual se conservaron.
+Puede volver a abrirse con scripts/abrir-vscode-net10.ps1.
+
+Las dos versiones de Tours se verificaron también con viewport de 390 px y
+menú desplegable; las capturas 24 y 25 conservan esa evidencia.
+Los cambios deliberadamente incorrectos no ejecutados se identifican
+explícitamente por laboratorio. No se inventaron resultados.
+
+## Entrega
+
+Repositorio personal de la Parte A: https://github.com/JorgeGN1412/Tarea-3-Maraton-Series.
+La etiqueta de entrega es tarea-3. La Parte B aún no se ha iniciado: requiere revisar el repositorio del equipo y el Avance 2.
+
+## Cierre de la verificación
+
+La compilación final usa await app.RunAsync y volvió a responder 200 en las
+tres comprobaciones .NET. La prueba HTTP integral se repitió contra esa
+compilación. El editor con SDK 10 cargó los dos proyectos y quedó sin errores
+ni advertencias; captura 27-vscode-sin-errores.png.

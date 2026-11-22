@@ -3,10 +3,10 @@
 import { ESTADOS } from '../data/series.js';
 // 'Por ver' → 'Viendo' → 'Vista' → 'Por ver'
 export function siguienteEstado(estado) {
-    const posicion = ESTADOS.indexOf(estado);
-    return ESTADOS[(posicion + 1) % ESTADOS.length];
+  const posicion = ESTADOS.indexOf(estado);
+  return ESTADOS[(posicion + 1) % ESTADOS.length];
 }
 // Clase CSS para la insignia: 'Por ver' → 'estado-por-ver'
 export function claseEstado(estado) {
-    return 'estado-' + estado.toLowerCase().replace(' ', '-');
+  return 'estado-' + estado.toLowerCase().replace(' ', '-');
 }

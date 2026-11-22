@@ -5,4 +5,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './estilos.css';
 import App from './App.jsx';
 // BrowserRouter permite enlaces directos y el botón Atrás sin recargar el documento.
-createRoot(document.getElementById('root')).render(<StrictMode><BrowserRouter><App /></BrowserRouter></StrictMode>);
+createRoot(document.getElementById('root')).render(
+  <StrictMode>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </StrictMode>,
+);

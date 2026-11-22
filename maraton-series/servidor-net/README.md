@@ -5,12 +5,15 @@ El proyecto compiló con cero errores y cero advertencias.
 Se generaron y aplicaron Inicial y GenerosFavoritos a una base separada Maraton_Tarea3_Jorge.
 
 ## Requisitos para otra computadora
+
 - SDK .NET 10 instalado y accesible como dotnet.
 - SQL Server y acceso con autenticación integrada o una cadena configurada fuera del repositorio.
 - dotnet-ef 10.0.14.
 
 ## Preparación
+
 Desde esta carpeta:
+
 ```powershell
 dotnet restore
 dotnet tool install --global dotnet-ef --version 10.0.14
@@ -23,11 +26,15 @@ También puede suministrarse ConnectionStrings__Maraton como variable de entorno
 La fábrica de diseño permite generar migraciones sin arrancar el servidor. No contiene contraseñas.
 
 ## Datos y rutas
+
 GET /api/miembros y GET /api/series proyectan el contrato del API Express.
 Los identificadores numéricos se convierten a texto.
-Las dos rutas se verificaron con HTTP 200 en una instancia de diagnóstico en el puerto 5090: cuatro miembros y cinco series, con identificadores de texto. Evidencia: docs/diagnostico-net.json en la raíz del repositorio. Aún debe unificarse el arranque habitual con el puerto documentado 5080.
+Las dos rutas se verificaron con HTTP 200 en una instancia de diagnóstico en el puerto 5090: cuatro miembros y cinco series, con identificadores de texto. Evidencia: docs/diagnostico-net.json en la raíz del repositorio. El perfil http y requests.http usan el mismo puerto 5090.
 Consultar docs/verificacion.md para el estado completo.
 
 ## Dependencia transitiva
+
 Pkcs 9.0.21 corrige las advertencias de seguridad de 9.0.11 detectadas al compilar.
 Fuente: https://github.com/advisories/GHSA-846f-f764-76mx
+
+Las consultas, restricciones, cambio sin migración y reconstrucción aislada se verificaron en docs/pruebas-sql.json. Los dos GET se contrastaron con Express en docs/pruebas-http.json.

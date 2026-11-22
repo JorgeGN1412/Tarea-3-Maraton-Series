@@ -1,7 +1,7 @@
 $ErrorActionPreference='Stop'
 $taskRoot=Split-Path -Parent $PSScriptRoot
-$taskSeries=Invoke-RestMethod -Uri 'http://127.0.0.1:5080/api/series' -TimeoutSec 25
-$taskMiembros=Invoke-RestMethod -Uri 'http://127.0.0.1:5080/api/miembros' -TimeoutSec 25
+$taskSeries=Invoke-RestMethod -Uri 'http://127.0.0.1:5090/api/series' -TimeoutSec 25
+$taskMiembros=Invoke-RestMethod -Uri 'http://127.0.0.1:5090/api/miembros' -TimeoutSec 25
 if (@($taskSeries).Count -ne 5 -or @($taskMiembros).Count -ne 4) { throw 'Cantidades inesperadas en las rutas .NET' }
 foreach ($taskSerie in $taskSeries) {
  if ($taskSerie._id -isnot [string] -or $taskSerie.miembroId -isnot [string]) { throw 'Los identificadores deben ser texto' }

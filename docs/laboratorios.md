@@ -1,849 +1,666 @@
 # Laboratorios — Parte A
 
-
-
-**Estado: implementación en progreso; no lista para entrega.**
-
-
-
-Se añadieron doce capturas reales y se probó el recorrido React–Express–MongoDB local. Las observaciones específicas de cada experimento conservan su estado pendiente cuando todavía no se ejecutó. Ver verificacion.md y capturas/README.md para los resultados actualizados.
-
-
+El Maratón es acumulativo: las capturas del estado final sirven para varios laboratorios y se identifican como tales. Cada sección distingue lo ejecutado de las variantes de código incorrecto que solo se analizaron. Los resultados verificables se conservan en pruebas-http.json, pruebas-sql.json y pruebas-bases.json.
 
 ## 1. Proyectos base: conceptos de React
 
-
-
 Código: `proyectos-base/conceptos-react`.
 
+### Explique el recorrido
 
+| #   | Pieza            | Qué hace                                                 |
+| --- | ---------------- | -------------------------------------------------------- |
+| 1   | Padre            | Define los datos de técnicos y solicitudes.              |
+| 2   | Props / children | Entrega valores y contenido a componentes reutilizables. |
+| 3   | map y key        | Produce listas con identidad estable.                    |
+| 4   | Evento           | Ejecuta el manejador pasado como función.                |
+| 5   | Setter           | Actualiza el estado sin modificar el arreglo anterior.   |
+| 6   | Render           | React recalcula el JSX y sincroniza el DOM.              |
 
-Ejercicios implementados: tarjetas de técnicos; avisos; tabla de técnicos; técnicos por área; encuesta; turno de atención; tareas; selector y ficha; panel de técnicos.
-
-
-
-#
-
-## Explique el recorrido
-
-
-
-| Paso | Qué ocurre |
-
-| --- | --- |
-
-| Recorrido | El padre crea datos → props llegan al hijo → JSX produce la interfaz → un evento ejecuta un setter → React vuelve a dibujar. |
-
-
-
-### Respuestas y explicación
-
-
+### Reflexiona y explicación
 
 Props son entradas de solo lectura. children es el contenido anidado. map genera elementos con key estable. El estado recuerda datos entre dibujos; un valor derivado se calcula desde ellos.
 
-
-
 ### Experimentos y observaciones
 
+Ejecutado: Siguiente cambió Turno 1 a 2; Pausar desactivó Siguiente. Se agregó «Preparar defensa» sin perder las tareas anteriores. Seleccionar Luis mostró su ficha. Con filtro Ocupados, marcar disponible a Luis dejó «Disponibles: 4 de 4» y lista vacía. No se ejecutaron las variantes deliberadamente incorrectas de key, onClick ni preventDefault.
 
+### Capturas del resultado acumulativo
 
-Quitar key debe producir una advertencia; usar un índice puede asociar el estado a otra fila. Llamar onClick={funcion()} ejecuta al dibujar. No usar preventDefault provoca envío del formulario.
-
-
-
-**Captura:** pendiente de ejecución real; no se adjunta evidencia simulada.
-
-
+![1. Proyectos base: conceptos de React](capturas/17-conceptos-react.png)
 
 ## 2. Registro y consulta de solicitudes
 
-
-
 Código: `proyectos-base/solicitudes`.
 
+### Explique el recorrido
 
+| #   | Pieza         | Qué hace                                                                                            |
+| --- | ------------- | --------------------------------------------------------------------------------------------------- |
+| 1   | Registro HTML | Recoge los campos y valida al enviar.                                                               |
+| 2   | Objeto        | Agrupa nombre, departamento, problema, prioridad y descripción.                                     |
+| 3   | localStorage  | JSON.stringify conserva los registros en el mismo origen.                                           |
+| 4   | Consulta HTML | JSON.parse recupera los registros y el filtro deriva la lista.                                      |
+| 5   | React         | PaginaRegistro y PaginaConsulta componen siete piezas sin lógica de registro, como pide esta etapa. |
 
-Se agregó consulta.html con filtro y contador; se conservaron HTML y JS del material de partida.
-
-
-
-#
-
-## Explique el recorrido
-
-
-
-| Paso | Qué ocurre |
-
-| --- | --- |
-
-| Recorrido | Registro HTML → objeto → JSON.stringify → localStorage → consulta HTML → filtro. La versión React separa siete componentes y muestra las dos páginas. |
-
-
-
-### Respuestas y explicación
-
-
+### Reflexiona y explicación
 
 Menu y ListaSolicitudes se reutilizan. class se convierte a className y for a htmlFor. La consigna limita la Parte 2 a composición estática; no exige registrar ni filtrar desde React.
 
-
-
 ### Experimentos y observaciones
 
+Ejecutado: registrar una solicitud de prioridad Alta en HTML, cambiar a consulta y recargar conservó un registro. Baja mostró cero; Todas mostró uno. React mostró las dos páginas y los siete componentes de composición estática. No se atribuye persistencia al formulario estático de React.
 
+### Capturas del resultado acumulativo
 
-Cambiar de página con el mismo origen debe permitir leer las solicitudes persistidas. El filtro Todas muestra todos los registros.
+![2. Registro y consulta de solicitudes](capturas/18-solicitudes-react.png)
 
-
-
-**Captura:** pendiente de ejecución real; no se adjunta evidencia simulada.
-
-
+![2. Registro y consulta de solicitudes](capturas/19-solicitudes-html.png)
 
 ## 3. Montaje del Maratón
 
-
-
 Código: `maraton-series/cliente`.
-
-
-
-El estado final usa la estructura cliente/servidor/servidor-net de la Tarea 3.
-
-
 
 ### Explique el recorrido
 
+| #   | Pieza      | Qué hace                                                    |
+| --- | ---------- | ----------------------------------------------------------- |
+| 1   | index.html | Contiene root y carga main.jsx.                             |
+| 2   | main.jsx   | createRoot monta React y BrowserRouter.                     |
+| 3   | App        | Define el mapa de rutas.                                    |
+| 4   | Layout     | Comparte el encabezado y coloca la página dentro de Outlet. |
 
-
-| Paso | Qué ocurre |
-
-| --- | --- |
-
-| Recorrido | index.html → main.jsx → createRoot → BrowserRouter → App → Layout → página. |
-
-
-
-### Respuestas y explicación
-
-
+### Reflexiona y explicación
 
 Vite transforma JSX. main.jsx monta React en root. Bootstrap es una dependencia local. El cliente y el API tienen package.json independientes.
 
-
-
 ### Experimentos y observaciones
 
+Ejecutado: Vite montó la aplicación y se abrió Inicio; build del cliente aprobado. Se mantuvieron proyectos npm independientes.
 
+### Capturas del resultado acumulativo
 
-El montaje en navegador y la captura inicial están pendientes de instalar dependencias.
-
-
-
-**Captura:** pendiente de ejecución real; no se adjunta evidencia simulada.
-
-
+![3. Montaje del Maratón](capturas/01-inicio.png)
 
 ## 4. Armar el tablero con componentes
 
-
-
 Código: `maraton-series/cliente/src/componentes`.
-
-
-
-El estado acumulativo conserva la separación del tablero; Pagina.jsx del material inicial queda como referencia de composición con children.
-
-
 
 ### Explique el recorrido
 
+| #   | Pieza        | Qué hace                                            |
+| --- | ------------ | --------------------------------------------------- |
+| 1   | PaginaSeries | Posee datos y operaciones.                          |
+| 2   | Panel        | Recibe titulo y children para el marco común.       |
+| 3   | ListaSeries  | Usa map y key basada en _id.                        |
+| 4   | TarjetaSerie | Presenta props y envía el id al callback del padre. |
 
-
-| Paso | Qué ocurre |
-
-| --- | --- |
-
-| Recorrido | Página → Panel → ListaSeries → TarjetaSerie → callback del padre. |
-
-
-
-### Respuestas y explicación
-
-
+### Reflexiona y explicación
 
 Panel recibe titulo y children; ListaSeries convierte datos en tarjetas; TarjetaSerie avisa con el id y no modifica la base. El identificador estable es la key.
 
-
-
 ### Experimentos y observaciones
 
+Ejecutado: cinco tarjetas y resumen; combinar Ana y Viendo mostró el mensaje de lista vacía. La misma captura acumulativa verifica composición y datos por props.
 
+### Capturas del resultado acumulativo
 
-Una lista vacía debe mostrar «Ninguna serie coincide con los filtros.». En la etapa inicial los botones solo escribían en consola; la versión final llama al API.
-
-
-
-**Captura:** pendiente de ejecución real; no se adjunta evidencia simulada.
-
-
+![4. Armar el tablero con componentes](capturas/02-tablero.png)
 
 ## 5. ¿Por qué no basta una variable?
 
-
-
 Código: `maraton-series/cliente/src/paginas/PaginaSeries.jsx`.
-
-
-
-El experimento temporal no se deja activo en el estado final.
-
-
 
 ### Explique el recorrido
 
+| #   | Pieza          | Qué hace                                                  |
+| --- | -------------- | --------------------------------------------------------- |
+| 1   | Clic           | Dispara la función del botón.                             |
+| 2   | Variable local | Reasignarla modifica memoria, pero no solicita un render. |
+| 3   | useState       | El setter comunica el cambio a React.                     |
+| 4   | Nuevo dibujo   | La lista y el resumen se vuelven a calcular.              |
 
-
-| Paso | Qué ocurre |
-
-| --- | --- |
-
-| Recorrido | Clic → función quitar → variable local cambia → no se solicita otro render. |
-
-
-
-### Respuestas y explicación
-
-
+### Reflexiona y explicación
 
 Una variable normal no avisa a React y se reinicializa en el siguiente dibujo. El setter de useState conserva el dato y solicita un nuevo render.
 
-
-
 ### Experimentos y observaciones
 
+Ejecutado en una reconstrucción aislada de esta etapa, sin API ni cambios en MongoDB: quitar Dark reasignó la variable a cuatro elementos en consola mientras siguieron visibles cinco. Con useState quedaron cuatro tarjetas visibles. El módulo temporal se retiró y se restauró la aplicación de Conceptos después de capturar el resultado.
 
+### Capturas del resultado acumulativo
 
-Con let la consola puede mostrar menos series mientras las tarjetas siguen iguales. Restaurar el código correcto después del experimento. Ejecución pendiente.
-
-
-
-**Captura:** pendiente de ejecución real; no se adjunta evidencia simulada.
-
-
+![Variable frente a estado](capturas/26-variable-vs-estado.png)
 
 ## 6. Cambiar estado y quitar con useState
 
-
-
 Código: `maraton-series/cliente/src/paginas/PaginaSeries.jsx`.
-
-
-
-La versión final usa setters funcionales tras esperar al API.
-
-
 
 ### Explique el recorrido
 
+| #   | Pieza                    | Qué hace                                                  |
+| --- | ------------------------ | --------------------------------------------------------- |
+| 1   | TarjetaSerie             | Invoca onAvanzar u onQuitar con el id.                    |
+| 2   | Operación                | Espera la confirmación del API en la versión acumulativa. |
+| 3   | map / filter             | Crea una lista nueva con el cambio o sin la serie.        |
+| 4   | setSeries(actuales => …) | Aplica el resultado sobre la lista vigente.               |
+| 5   | Render                   | Actualiza tarjetas, cantidad y resumen.                   |
 
-
-| Paso | Qué ocurre |
-
-| --- | --- |
-
-| Recorrido | Tarjeta → onAvanzar/onQuitar → map/filter → setSeries → lista nueva. |
-
-
-
-### Respuestas y explicación
-
-
+### Reflexiona y explicación
 
 filter devuelve otro arreglo sin la serie eliminada. map conserva las demás referencias y copia el objeto que cambia. El spread debe ir antes del campo actualizado. No se usa push ni splice sobre el estado.
 
-
-
 ### Experimentos y observaciones
 
+Ejecutado: creación, cambio de estado y eliminación desde React; recarga conservó el resultado. La prueba HTTP recorrió Por ver → Viendo → Vista → Por ver sobre una serie desechable y consultó después de cada cambio.
 
+### Capturas del resultado acumulativo
 
-El ciclo es Por ver → Viendo → Vista → Por ver. En la etapa local, F5 recuperaba los datos iniciales; en la final, F5 consulta MongoDB y conserva cambios.
-
-
-
-**Captura:** pendiente de ejecución real; no se adjunta evidencia simulada.
-
-
+![6. Cambiar estado y quitar con useState](capturas/07-estado-persistente.png)
 
 ## 7. Filtros y resumen
 
-
-
 Código: `maraton-series/cliente/src/componentes/filtros/Filtros.jsx`.
-
-
-
-Se conservan los filtros al cambiar el otro parámetro. La versión final almacena la selección en la URL.
-
-
 
 ### Explique el recorrido
 
+| #   | Pieza           | Qué hace                                                     |
+| --- | --------------- | ------------------------------------------------------------ |
+| 1   | Select          | Notifica el estado o miembro elegido.                        |
+| 2   | useSearchParams | Actualiza el parámetro y conserva el otro.                   |
+| 3   | Lista derivada  | Combina las condiciones con AND.                             |
+| 4   | ListaSeries     | Muestra solo las coincidencias o el aviso vacío.             |
+| 5   | Resumen         | Cuenta la lista completa, independientemente de los filtros. |
 
-
-| Paso | Qué ocurre |
-
-| --- | --- |
-
-| Recorrido | Selección → callback → parámetros URL → lista derivada → ListaSeries y Resumen. |
-
-
-
-### Respuestas y explicación
-
-
+### Reflexiona y explicación
 
 El estado se eleva al ancestro común. Lista visible y conteos no son estados adicionales. Los dos filtros se combinan con AND. El resumen cuenta la lista completa, no solo lo visible.
 
-
-
 ### Experimentos y observaciones
 
+Ejecutado: cinco series iniciales; Por ver 2, Viendo 1, Vista 2. Filtro Viendo mostró The Office. Ana + Viendo mostró vacío. Los parámetros se conservaron tras recargar.
 
+### Capturas del resultado acumulativo
 
-Sin filtro: 5 series, Por ver 2, Viendo 1, Vista 2. Ana tiene Dark y Planeta Tierra. Ana + Viendo debe mostrar lista vacía antes de modificar los datos.
+![7. Filtros y resumen](capturas/03-filtro-viendo.png)
 
-
-
-**Captura:** pendiente de ejecución real; no se adjunta evidencia simulada.
-
-
+![7. Filtros y resumen](capturas/04-lista-vacia.png)
 
 ## 8. Formulario controlado
 
-
-
 Código: `maraton-series/cliente/src/componentes/formulario/FormularioSerie.jsx`.
-
-
-
-Se conserva el formulario cuando falla el API y se limpia solo al confirmar. Se normaliza titulo con trim y temporadas con Number.
-
-
 
 ### Explique el recorrido
 
+| #   | Pieza         | Qué hace                                           |
+| --- | ------------- | -------------------------------------------------- |
+| 1   | onChange      | Lee name y value del control.                      |
+| 2   | setDatos      | Copia los demás campos antes de actualizar uno.    |
+| 3   | submit        | preventDefault evita el envío tradicional.         |
+| 4   | validarSerie  | Devuelve errores por campo.                        |
+| 5   | onAgregar     | Espera la creación confirmada.                     |
+| 6   | Éxito / error | Limpia solo al guardar; conserva valores si falla. |
 
-
-| Paso | Qué ocurre |
-
-| --- | --- |
-
-| Recorrido | onChange → name/value → copia del objeto datos → submit → validarSerie → onAgregar. |
-
-
-
-### Respuestas y explicación
-
-
+### Reflexiona y explicación
 
 value procede del estado y onChange lo modifica. Un solo manejador usa name para elegir la propiedad. preventDefault evita recargar. Los errores se muestran junto al campo. El id y estado inicial son responsabilidad del servidor.
 
-
-
 ### Experimentos y observaciones
 
+Ejecutado: envío vacío mostró cuatro errores. Se comprobó una creación válida. HTTP rechazó temporadas 0, 31, 1.5 y texto "2". No se ejecutó la variante deliberada que omite el spread.
 
+### Capturas del resultado acumulativo
 
-Omitir ...actuales descarta otros campos. Enviar vacío debe mostrar cuatro errores. Temporadas 0, 31 y decimales se rechazan. Prueba visual pendiente.
-
-
-
-**Captura:** pendiente de ejecución real; no se adjunta evidencia simulada.
-
-
+![8. Formulario controlado](capturas/05-validacion.png)
 
 ## 9. Consumo de APIs con JavaScript
 
-
-
 Código: `proyectos-base/series-js`.
-
-
-
-La búsqueda ocurre al enviar. Secuencia de peticiones descarta resultados antiguos. Se contempla ausencia de portada, género o fecha.
-
-
 
 ### Explique el recorrido
 
+| #   | Pieza     | Qué hace                                                                    |
+| --- | --------- | --------------------------------------------------------------------------- |
+| 1   | submit    | Lee la búsqueda y muestra Buscando….                                        |
+| 2   | api.js    | fetch espera la respuesta y revisa response.ok.                             |
+| 3   | JSON      | Convierte los resultados de TVmaze en series.                               |
+| 4   | render.js | Crea tarjetas usando textContent.                                           |
+| 5   | Propuesta | POST a JSONPlaceholder muestra un registro simulado, sin persistencia real. |
 
-
-| Paso | Qué ocurre |
-
-| --- | --- |
-
-| Recorrido | submit → api.js → fetch → response.ok → JSON → render.js → DOM. |
-
-
-
-### Respuestas y explicación
-
-
+### Reflexiona y explicación
 
 fetch no lanza un error solo por recibir 404: hay que revisar ok. textContent evita interpretar contenido externo como HTML. JSONPlaceholder simula POST; no guarda propuestas de forma permanente.
 
-
-
 ### Experimentos y observaciones
 
+Ejecutado: buscar dark mostró resultados reales de TVmaze; se observó Buscando… y una búsqueda inexistente mostró el estado vacío. El POST a JSONPlaceholder devolvió éxito simulado y limpió el formulario; la captura 23 conserva ese resultado y el estado vacío. No se simulan resultados del servicio externo.
 
+### Capturas del resultado acumulativo
 
-Buscar dark: resultados; texto inexistente: vacío; red lenta: carga; desconexión: error. Propuesta válida debe mostrar éxito simulado. Pruebas externas pendientes por red.
+![9. Consumo de APIs con JavaScript](capturas/22-series-js-busqueda.png)
 
-
-
-**Captura:** pendiente de ejecución real; no se adjunta evidencia simulada.
-
-
+![Vacío y POST simulado](capturas/23-series-js-post-vacio.png)
 
 ## 10. Estructura del API
 
-
-
 Código: `maraton-series/servidor`.
-
-
-
-Se separaron miembros y series, con sus cuatro capas.
-
-
 
 ### Explique el recorrido
 
+| #   | Pieza      | Qué hace                                       |
+| --- | ---------- | ---------------------------------------------- |
+| 1   | index.js   | Lee configuración y conecta antes de escuchar. |
+| 2   | app.js     | Compone middleware y módulos.                  |
+| 3   | Router     | Selecciona método y ruta.                      |
+| 4   | Controller | Traduce HTTP hacia el servicio.                |
+| 5   | Service    | Aplica reglas.                                 |
+| 6   | Repository | Consulta MongoDB.                              |
 
-
-| Paso | Qué ocurre |
-
-| --- | --- |
-
-| Recorrido | index → configuración → conexión → app → rutas → controlador → servicio → repositorio. |
-
-
-
-### Respuestas y explicación
-
-
+### Reflexiona y explicación
 
 El cliente no conoce la contraseña de MongoDB. .env contiene configuración privada y .env.example contiene la plantilla. Cada capa tiene una responsabilidad y no se anidan los dos proyectos npm.
 
-
-
 ### Experimentos y observaciones
 
+Ejecutado: comprobación de configuración incompleta y pruebas del servicio. El repositorio separa cliente, Express y .NET; cada petición atraviesa su módulo.
 
+### Capturas del resultado acumulativo
 
-Falta una variable obligatoria: el arranque debe detenerse. La prueba de configuración incompleta pasó.
-
-
-
-**Captura:** pendiente de ejecución real; no se adjunta evidencia simulada.
-
-
+![10. Estructura del API](capturas/02-tablero.png)
 
 ## 11. El API escuchando peticiones
 
-
-
 Código: `maraton-series/servidor/src/app.js`.
-
-
-
-HttpError lleva estado, codigo, mensaje y detalles. Express 5 propaga los rechazos de los controladores async.
-
-
 
 ### Explique el recorrido
 
+| #   | Pieza            | Qué hace                                                                |
+| --- | ---------------- | ----------------------------------------------------------------------- |
+| 1   | app.listen       | Recibe POST con JSON mal escrito.                                       |
+| 2   | cors             | Añade las cabeceras para el origen del cliente.                         |
+| 3   | express.json     | Falla al interpretar el cuerpo y propaga el error.                      |
+| 4   | rutaNoEncontrada | No se ejecuta en este recorrido: Express salta al manejador de errores. |
+| 5   | manejarErrores   | Devuelve 400 con codigo JSON_INVALIDO y mensaje legible.                |
 
+### Reflexiona y explicación
 
-| Paso | Qué ocurre |
+1. **Petición y respuesta.** La petición contiene método, dirección, cabeceras y cuerpo opcional. La respuesta contiene estado HTTP, cabeceras y cuerpo opcional.
 
-| --- | --- |
+2. **next(new HttpError).** Centraliza la serialización del error y evita formatos distintos por ruta.
 
-| Recorrido | Petición → cors → express.json → rutas → rutaNoEncontrada → manejarErrores. |
+3. **Cuatro parámetros.** Express reconoce el manejador por (error, req, res, next).
 
+4. **Orden.** CORS se ejecuta antes de las rutas para cubrir también sus errores; el manejador final recoge los fallos anteriores.
 
+5. **codigo, mensaje y detalles.** codigo permite decidir al programa; mensaje explica al usuario; detalles enlaza errores con campos del formulario.
 
-### Respuestas y explicación
-
-
-
-Los middlewares se ejecutan en orden. express.json prepara req.body. El manejador de errores tiene cuatro parámetros. 400 indica solicitud inválida; 404 indica ruta o recurso ausente.
-
-
+6. **Error 500.** El cliente recibe un mensaje general; la terminal conserva el detalle técnico sin revelar credenciales.
 
 ### Experimentos y observaciones
 
+Ejecutado: JSON mal formado produjo 400 JSON_INVALIDO y una ruta inexistente produjo 404 RUTA_NO_ENCONTRADA. Evidencia detallada en pruebas-http.json.
 
+### Capturas del resultado acumulativo
 
-JSON mal formado debe responder 400 JSON_INVALIDO. Una ruta inexistente debe devolver 404 con el contrato uniforme. Pruebas HTTP pendientes de dependencias.
-
-
-
-**Captura:** pendiente de ejecución real; no se adjunta evidencia simulada.
-
-
+![11. El API escuchando peticiones](capturas/10-id-invalido.png)
 
 ## 12. Conexión con MongoDB y módulo miembros
 
-
-
 Código: `maraton-series/servidor/src/miembros`.
-
-
-
-El seed es idempotente: no borra ni sobrescribe cambios del usuario. Crea índice único de correo.
-
-
 
 ### Explique el recorrido
 
+| #   | Pieza              | Qué hace                                              |
+| --- | ------------------ | ----------------------------------------------------- |
+| 1   | app.use            | Monta /api/miembros.                                  |
+| 2   | miembros.routes.js | Relaciona GET / con listar.                           |
+| 3   | Controller         | Espera servicio.listar().                             |
+| 4   | Service            | Convierte _id a texto y conserva el contrato público. |
+| 5   | Repository         | find con proyección, sort por nombre y toArray().     |
+| 6   | MongoDB            | Devuelve los cuatro documentos.                       |
+| 7   | Controller         | res.json envía el arreglo con estado 200.             |
 
+### Reflexiona y explicación
 
-| Paso | Qué ocurre |
+1. **Cuatro capas.** Router: qué ruta y método. Controller: qué leer y responder por HTTP. Service: qué reglas aplicar. Repository: cómo consultar MongoDB.
 
-| --- | --- |
+2. **Servicio al listar.** Mantiene la separación y centraliza la conversión de ObjectId al contrato, aunque no haya una regla de negocio adicional.
 
-| Recorrido | GET /api/miembros → rutas → controlador → servicio → repositorio → find → sort → JSON. |
+3. **Ruta relativa /.** El prefijo /api/miembros ya lo aporta app.use; no se repite dentro del router.
 
+4. **Cursor.** find devuelve una consulta recorrible, no el arreglo final. toArray ejecuta y materializa sus documentos; quitarlo impediría enviar el listado esperado.
 
+5. **Colección incorrecta y 200.** Una colección sin datos permite una consulta válida que devuelve []; 200 no garantiza que el nombre de la colección sea el correcto.
 
-### Respuestas y explicación
-
-
-
-MongoClient se comparte. Se conecta antes de escuchar. El repositorio usa proyección para no devolver correo u otros datos que el contrato no pide. El servicio convierte ObjectId a texto.
-
-
+6. **POST /api/miembros.** No existe un manejador POST para ese recurso. Coincidir en dirección no sustituye coincidir en método; cae en 404.
 
 ### Experimentos y observaciones
 
+Ejecutado: GET miembros devolvió Ana, Diego, Luis y Sofía en orden y con ids de texto. pruebas-http.json contiene la respuesta Express; la captura .NET muestra el mismo contrato y nombres, con otros valores de id.
 
+### Capturas del resultado acumulativo
 
-Con la base disponible se esperan Ana, Diego, Luis y Sofía en orden por nombre. La conexión real y la evidencia están pendientes.
-
-
-
-**Captura:** pendiente de ejecución real; no se adjunta evidencia simulada.
-
-
+![12. Conexión con MongoDB y módulo miembros](capturas/14-net-miembros.png)
 
 ## 13. Series: listar y crear
 
-
-
 Código: `maraton-series/servidor/src/series`.
-
-
-
-Las pruebas verificaron que no se inserta un miembro inexistente ni un estado elegido por el cliente.
-
-
 
 ### Explique el recorrido
 
+| #   | Pieza                   | Qué hace                                                     |
+| --- | ----------------------- | ------------------------------------------------------------ |
+| 1   | express.json            | Convierte el texto recibido a req.body.                      |
+| 2   | Router                  | Selecciona POST /api/series.                                 |
+| 3   | Controller.crear        | Llama a servicio.crear con los datos.                        |
+| 4   | validarSerie            | Comprueba título, género, temporadas y formato de miembroId. |
+| 5   | miembros.service.existe | Verifica la referencia antes de insertar.                    |
+| 6   | Service / Repository    | Elige campos permitidos, asigna Por ver e inserta.           |
+| 7   | buscarPorId             | Une el miembro con $lookup y proyecta la serie.              |
+| 8   | Controller              | Responde 201 con la serie confirmada, no con req.body.       |
 
+### Reflexiona y explicación
 
-| Paso | Qué ocurre |
+1. **Servicio de miembros.** La comprobación pertenece a la interfaz del módulo; series no depende de cómo miembros guarda sus datos.
 
-| --- | --- |
+2. **Validación del servidor.** Puede recibir clientes distintos o peticiones manipuladas. La interfaz del navegador no protege la base.
 
-| Recorrido | POST → JSON → validar campos → comprobar miembro → insertOne → consultar con $lookup → 201. |
+3. **insertOne(req.body).** Permitiría asignar estado, ids o campos imprevistos; aquí se seleccionan explícitamente los datos aceptados.
 
+4. **ObjectId.** MongoDB compara tipos; un texto con los mismos caracteres no equivale a un ObjectId almacenado.
 
+5. **$lookup, $unwind y $set.** lookup obtiene el miembro relacionado, unwind convierte el arreglo de la unión en un documento y set/proyección extrae su nombre. Una referencia o colección incorrecta rompe el enriquecimiento.
 
-### Respuestas y explicación
-
-
-
-La validación del cliente mejora la experiencia; el servidor vuelve a validar. $lookup une la referencia miembroId con miembros. Se eligen campos permitidos y el estado inicial siempre es Por ver.
-
-
+6. **Respuesta 201.** Indica creación y entrega el recurso leído, con _id y estado asignados por el servidor.
 
 ### Experimentos y observaciones
 
+Ejecutado: POST válido devolvió 201 con Por ver y nombre Ana. Miembro inexistente y temporadas inválidas devolvieron 400. Los campos adicionales no aparecieron en el contrato; estado enviado por el cliente no sustituyó Por ver. No se alteró temporalmente CON_MIEMBRO.
 
+### Capturas del resultado acumulativo
 
-Temporadas fuera de rango o miembro inexistente deben responder 400 con detalles; creación válida responde 201. La persistencia real falta por verificar.
-
-
-
-**Captura:** pendiente de ejecución real; no se adjunta evidencia simulada.
-
-
+![13. Series: listar y crear](capturas/06-serie-creada.png)
 
 ## 14. Series: cambiar estado y eliminar
 
-
-
 Código: `maraton-series/servidor/src/series/series.service.js`.
-
-
-
-Pruebas del servicio para id inválido, recurso ausente y borrado ausente pasaron.
-
-
 
 ### Explique el recorrido
 
+| #   | Pieza                    | Qué hace                                                       |
+| --- | ------------------------ | -------------------------------------------------------------- |
+| 1   | app.use                  | Envía /api/series al módulo de series.                         |
+| 2   | Router                   | Selecciona PATCH /:id/estado.                                  |
+| 3   | Controller               | Lee id de params y estado de body.                             |
+| 4   | revisarId                | Rechaza el formato inválido con 400.                           |
+| 5   | Service                  | Comprueba que estado pertenezca al catálogo.                   |
+| 6   | Repository.cambiarEstado | updateOne con $set; matchedCount distingue existencia.         |
+| 7   | Repository.buscarPorId   | Recupera la serie actualizada y su miembro.                    |
+| 8   | Controller               | Responde JSON 200; DELETE usa deletedCount y finaliza con 204. |
 
+### Reflexiona y explicación
 
-| Paso | Qué ocurre |
+1. **Id y estado.** La dirección identifica qué recurso cambiar; el cuerpo expresa el dato nuevo de un PATCH.
 
-| --- | --- |
+2. **400 y 404.** revisarId detecta un formato inválido: 400. Un formato válido que no encuentra documento se detecta después de consultar: 404.
 
-| Recorrido | PATCH/DELETE → revisarId → servicio → updateOne/deleteOne → comprobar resultado → respuesta. |
+3. **utils/revisarId.** La validación de ObjectId es compartible por otros módulos, no una regla exclusiva de series.
 
+4. **matchedCount.** Repetir el estado actual puede dar modifiedCount=0 con matchedCount=1: la serie existe y corresponde responder éxito.
 
+5. **DELETE sin respuesta.** La base puede haber borrado mientras el cliente queda esperando. El controlador finaliza con res.status(204).end().
 
-### Respuestas y explicación
-
-
-
-400: formato inválido. 404: formato válido sin documento. matchedCount permite reconocer una actualización válida incluso si el valor no cambió. DELETE correcto devuelve 204 sin cuerpo.
-
-
+6. **Segundo DELETE.** Ya no hay documento y deletedCount=0: 404. Puede ocurrir desde otra pestaña o por repetir una operación.
 
 ### Experimentos y observaciones
 
+Ejecutado: ciclo de estados, id inválido 400, id válido inexistente 404, estado Terminada 400; repetir el estado actual devolvió 200. Dos DELETE consecutivos devolvieron 204 y 404. No se ejecutó la variante de controlador que omite end().
 
+### Capturas del resultado acumulativo
 
-Eliminar dos veces debe producir primero 204 y después 404. Estado Terminada debe responder 400. Falta ejecutar estas rutas contra MongoDB.
-
-
-
-**Captura:** pendiente de ejecución real; no se adjunta evidencia simulada.
-
-
+![14. Series: cambiar estado y eliminar](capturas/09-eliminacion-verificada.png)
 
 ## 15. React lee el API
 
-
-
 Código: `maraton-series/cliente/src/paginas/PaginaSeries.jsx`.
-
-
-
-Los datos ya no proceden de seriesIniciales; se consultan al API.
-
-
 
 ### Explique el recorrido
 
+| #   | Pieza                 | Qué hace                                                  |
+| --- | --------------------- | --------------------------------------------------------- |
+| 1   | Primer dibujo         | Listas vacías y cargando=true.                            |
+| 2   | useEffect / cargar    | Inicia las dos consultas después del montaje.             |
+| 3   | obtenerSeries → pedir | fetch al API configurado en VITE_API_URL.                 |
+| 4   | GET /api/series       | El servidor consulta MongoDB y responde 200.              |
+| 5   | respuesta.json        | Espera y convierte el cuerpo.                             |
+| 6   | Setters               | Guardan series y miembros; en error se guarda el mensaje. |
+| 7   | finally               | Termina la carga también cuando hubo error.               |
+| 8   | Segundo dibujo        | Muestra tarjetas, filtros y resumen o la alerta.          |
 
+### Reflexiona y explicación
 
-| Paso | Qué ocurre |
+1. **API en .env.** Permite cambiar servidor entre entornos; el valor de respaldo solo facilita el modo local.
 
-| --- | --- |
+2. **Variables VITE\_.** Se incorporan al código entregado al navegador. Una URL pública es válida; una contraseña no.
 
-| Recorrido | Montaje → useEffect → Promise.all → GET series y miembros → setters → pantalla. |
+3. **API apagado y CORS.** Ambos pueden hacer rechazar fetch. En Red/Consola se distingue conexión rechazada de respuesta bloqueada por la política del origen.
 
+4. **useEffect.** La petición es un efecto externo después del render. Ponerla en el cuerpo provocaría consultas en cada dibujo y, al actualizar el estado, un ciclo.
 
+5. **finally.** Termina Cargando tanto en éxito como en error.
 
-### Respuestas y explicación
-
-
-
-El efecto obtiene datos después del montaje. Cargando, error y resultados son estados distintos. Promise.all permite pedir las dos listas en paralelo. La limpieza cancela peticiones al salir.
-
-
+6. **Persistir la creación.** Agregar debe enviar POST al servidor; guardar solo en React pierde la serie al recargar. La etapa final ya realiza el POST.
 
 ### Experimentos y observaciones
 
+Ejecutado: montaje consultó los datos reales de MongoDB, mostró cinco series y permitió recargar. No se ejecutaron cambios deliberados de CORS ni la variante con petición dentro del cuerpo del componente.
 
+### Capturas del resultado acumulativo
 
-API apagado: mensaje de conexión. Base con datos: cinco series. No se debe guardar una contraseña en VITE_API_URL. Prueba integrada pendiente.
-
-
-
-**Captura:** pendiente de ejecución real; no se adjunta evidencia simulada.
-
-
+![15. React lee el API](capturas/02-tablero.png)
 
 ## 16. El formulario crea con POST
 
-
-
 Código: `maraton-series/cliente/src/paginas/NuevaSerie.jsx`.
-
-
-
-Los errores por campo atraviesan agregar y llegan al catch del formulario. useNavigate vuelve a la lista tras confirmar.
-
-
 
 ### Explique el recorrido
 
+| #   | Pieza                          | Qué hace                                                                                                              |
+| --- | ------------------------------ | --------------------------------------------------------------------------------------------------------------------- |
+| 1   | FormularioSerie / validarSerie | Revisa los campos antes de enviar.                                                                                    |
+| 2   | setEnviando(true)              | Desactiva el botón durante la petición.                                                                               |
+| 3   | NuevaSerie / agregar           | Espera crearSerie; el estado final separa el formulario en una ruta.                                                  |
+| 4   | crearSerie → pedir             | POST con method, Content-Type y JSON.stringify.                                                                       |
+| 5   | API POST /api/series           | Valida, guarda y responde 201 o 400 con detalles.                                                                     |
+| 6   | useNavigate                    | Vuelve a /series después del éxito; esa página vuelve a consultar. Sustituye el setSeries del App anterior al Router. |
+| 7   | setDatos(VACIO)                | Solo se alcanza después del éxito; si hay 400 se conservan valores y se muestran detalles.                            |
+| 8   | finally                        | Desactiva enviando aunque la petición haya fallado.                                                                   |
 
+### Reflexiona y explicación
 
-| Paso | Qué ocurre |
+1. **fetch para enviar datos.** method POST, headers Content-Type application/json y body JSON.stringify. Sin cabecera el middleware no interpreta el cuerpo; sin stringify no viaja JSON válido.
 
-| --- | --- |
+2. **Primero el API.** La pantalla representa lo que se guardó y no anuncia éxito antes de confirmarlo.
 
-| Recorrido | Formulario → agregar → crearSerie → pedir → POST → servicio → MongoDB → 201 → navegar. |
+3. **Sin catch en agregar.** El error debe propagarse al formulario, que conoce los campos y conserva lo escrito. En la versión con Router, NuevaSerie también deja llegar ese error.
 
+4. **miembroId.** Es la referencia inequívoca; dos personas podrían compartir nombre.
 
+5. **Dos validaciones.** La de React guía al usuario y la del servidor protege todas las entradas.
 
-### Respuestas y explicación
-
-
-
-Se manda Content-Type application/json y JSON.stringify. El select guarda miembroId, no el nombre. await permite conservar campos y mostrar errores si el servidor rechaza. disabled evita envíos duplicados.
-
-
+6. **Setter funcional.** En una lista acumulativa evita sobrescribir cambios llegados durante el await. En la ruta nueva, se navega y se consulta de nuevo al guardar.
 
 ### Experimentos y observaciones
 
+Ejecutado: creación desde formulario y recarga mostraron la serie nueva. Una serie desechable con id 6b036e813e8afc9e8e00a2d6 sobrevivió al cambio de proceso 46704 → 22484. El borrado posterior siguió ausente tras reiniciar a proceso 29356. No se dejó el banco efímero como modo habitual.
 
+### Capturas del resultado acumulativo
 
-Sin await, el formulario se limpiaría antes de saber si se guardó. En la versión correcta un error conserva lo escrito. La recarga debe conservar una serie creada.
+![16. El formulario crea con POST](capturas/06-serie-creada.png)
 
-
-
-**Captura:** pendiente de ejecución real; no se adjunta evidencia simulada.
-
-
+![16. El formulario crea con POST](capturas/15-persistencia-reinicio.png)
 
 ## 17. Cambiar estado y quitar desde React
 
-
-
 Código: `maraton-series/cliente/src/paginas/PaginaSeries.jsx`.
-
-
-
-Un Set bloquea dos operaciones simultáneas sobre la misma tarjeta; otras tarjetas pueden operar independientemente.
-
-
 
 ### Explique el recorrido
 
+| #   | Pieza                 | Qué hace                                                                             |
+| --- | --------------------- | ------------------------------------------------------------------------------------ |
+| 1   | TarjetaSerie / Quitar | Llama al callback con _id.                                                           |
+| 2   | PaginaSeries / quitar | Bloquea clics repetidos por tarjeta y espera al API.                                 |
+| 3   | eliminarSerie → pedir | Envía DELETE /series/:id.                                                            |
+| 4   | Router → Controller   | Entrega el id al servicio.                                                           |
+| 5   | Service.eliminar      | Valida el id y verifica deletedCount.                                                |
+| 6   | Repository.deleteOne  | Elimina el documento por ObjectId.                                                   |
+| 7   | pedir / 204           | Retorna null sin intentar leer JSON.                                                 |
+| 8   | setSeries             | filter sobre la lista actual; los errores se muestran arriba y no quitan la tarjeta. |
 
+### Reflexiona y explicación
 
-| Paso | Qué ocurre |
+1. **204 antes de json.** 204 no trae cuerpo: intentar parsearlo produce un error aunque el borrado haya funcionado.
 
-| --- | --- |
+2. **Serie confirmada.** El servidor es quien valida y devuelve el estado realmente guardado.
 
-| Recorrido | 1 Tarjeta → 2 operar → 3 seriesApi → 4 rutas/controller → 5 servicio → 6 repositorio → 7 respuesta → 8 setter funcional. |
+3. **Setter funcional.** Dos respuestas concurrentes se aplican a la lista vigente, evitando recuperar elementos ya eliminados.
 
+4. **Catch en botones.** La página muestra sus errores; agregar deja propagarlos al formulario para mostrarlos por campo.
 
+5. **Actualización optimista.** Acelera la sensación de respuesta, pero requiere revertir si falla. Esta implementación espera confirmación del servidor.
 
-### Respuestas y explicación
+6. **Recurso nuevo.** Crear routes, controller, service y repository; montar el módulo en app.js; añadir funciones HTTP y componentes del cliente.
 
-
-
-El API confirma antes de cambiar la pantalla. Una respuesta 204 se procesa sin json(). El setter funcional usa la lista vigente, evitando revivir elementos al recibir respuestas de operaciones concurrentes.
-
-
+| Pantalla | Función HTTP                    | Ruta                            | Repositorio                 |
+| -------- | ------------------------------- | ------------------------------- | --------------------------- |
+| Abrir    | obtenerSeries / obtenerMiembros | GET /api/series y /api/miembros | listar                      |
+| Agregar  | crearSerie                      | POST /api/series                | crear y buscarPorId         |
+| Cambiar  | cambiarEstadoSerie              | PATCH /api/series/:id/estado    | cambiarEstado y buscarPorId |
+| Quitar   | eliminarSerie                   | DELETE /api/series/:id          | eliminar                    |
 
 ### Experimentos y observaciones
 
+Ejecutado: actualización y eliminación desde React persistieron al recargar; el borrado siguió ausente tras reiniciar. HTTP confirmó DELETE 204 sin cuerpo y segundo DELETE 404. No se ejecutaron las variantes de actualización optimista ni de respuestas concurrentes sin setter funcional.
 
+### Capturas del resultado acumulativo
 
-Dos pestañas: borrar en una y repetir en otra debe mostrar 404. Sin caso 204, json() falla aunque el borrado ocurrió. Sin setter funcional, dos borrados con red lenta pueden reintroducir una tarjeta. Pendiente de ejecutar.
-
-
-
-**Captura:** pendiente de ejecución real; no se adjunta evidencia simulada.
-
-
+![17. Cambiar estado y quitar desde React](capturas/16-borrado-tras-reinicio.png)
 
 ## 18. React Router
 
-
-
 Código: `maraton-series/cliente/src/App.jsx`.
-
-
-
-Se implementan inicio, lista, detalle, nueva serie y ruta comodín.
-
-
 
 ### Explique el recorrido
 
+| #   | Pieza                | Qué hace                                                              |
+| --- | -------------------- | --------------------------------------------------------------------- |
+| 1   | TarjetaSerie / Link  | Declara la dirección /series/:id.                                     |
+| 2   | BrowserRouter        | Actualiza el historial sin descargar otro documento HTML.             |
+| 3   | Routes               | Selecciona la página de detalle.                                      |
+| 4   | Layout / Outlet      | Coloca el detalle bajo el encabezado común.                           |
+| 5   | useParams            | Obtiene id como texto.                                                |
+| 6   | useEffect [id]       | Inicia la consulta y prepara AbortController para la limpieza.        |
+| 7   | obtenerSerie → pedir | Solicita GET /api/series/:id.                                         |
+| 8   | API                  | Valida el id y consulta la serie y el miembro.                        |
+| 9   | Setters              | Actualizan resultado y carga; 400 y 404 muestran mensajes diferentes. |
 
+### Reflexiona y explicación
 
-| Paso | Qué ocurre |
+1. **Navegación sin documento nuevo.** Link usa el historial y React vuelve a seleccionar el elemento de la ruta. Un a href normal solicita un nuevo documento.
 
-| --- | --- |
+2. **Layout sin path y Outlet.** Es una ruta de composición: no añade segmento y Outlet presenta a su hijo actual.
 
-| Recorrido | 1 Link → 2 BrowserRouter/historial → 3 Routes → 4 Outlet → 5 useParams → 6 useEffect [id] → 7 obtenerSerie → 8 GET /:id → 9 setResultado. |
+3. **Dos 404.** /peliculas no coincide en el cliente y lo detecta *. Un id válido ausente sí llega al API, que responde 404 de recurso.
 
+4. **Dependencia [id].** Vuelve a consultar al cambiar el parámetro. Con [] podría conservar el detalle anterior si la instancia se reutiliza.
 
+5. **Limpieza.** AbortController cancela la solicitud al salir o cambiar de id; AbortError no se muestra como fallo de conexión.
 
-### Respuestas y explicación
-
-
-
-Link usa el historial sin pedir un documento completo. Layout no necesita path porque solo comparte estructura. /peliculas lo detecta el cliente; una serie ausente la detecta el API. [id] recarga al cambiar de detalle. AbortController cancela la solicitud anterior. Los filtros en URL sobreviven a recarga y Atrás.
-
-
+6. **Filtros en URL.** Permite recargar, compartir enlaces y usar Atrás. Una página podría guardarse como ?pagina=2 y pasarse al servidor para paginación real.
 
 ### Experimentos y observaciones
 
+Ejecutado: entrar al detalle por enlace, recargar dirección directa, id mal formado, id inexistente y ruta /peliculas. Filtros conservados en URL. Las variantes de quitar Outlet, quitar limpieza y sustituir Link por a se explican por revisión; no se presentan como observaciones ejecutadas.
 
+### Capturas del resultado acumulativo
 
-10.1 Con a href se recarga el documento. 10.2 Sin Outlet solo se ve el encabezado. 10.3 Sin limpieza se completan solicitudes redundantes. 10.4 AbortError no es un error de conexión. 10.5 El comodín al inicio no desplaza rutas más específicas. Todos pendientes de evidencia en navegador.
+![18. React Router](capturas/08-detalle.png)
 
-
-
-**Captura:** pendiente de ejecución real; no se adjunta evidencia simulada.
-
-
+![18. React Router](capturas/12-ruta-inexistente.png)
 
 ## 19. EF Core y SQL Server
 
-
-
 Código: `maraton-series/servidor-net`.
-
-
-
-Entidades, restricciones, favoritos y rutas escritas. Compilación aprobada con SDK 10.0.404, dos migraciones generadas y aplicadas a SQL Server. Las respuestas HTTP del servidor siguen en comprobación.
-
-
 
 ### Explique el recorrido
 
+| #   | Pieza                 | Qué hace                                                    |
+| --- | --------------------- | ----------------------------------------------------------- |
+| 1   | Kestrel / puerto 5090 | Recibe la petición GET.                                     |
+| 2   | MapGet /api/series    | Selecciona el manejador de lectura.                         |
+| 3   | AddDbContext          | Inyecta MaratonContext para esa petición.                   |
+| 4   | Configuración privada | Lee ConnectionStrings:Maraton desde user-secrets o entorno. |
+| 5   | OrderBy / Select      | Ordena y define exactamente los campos del contrato.        |
+| 6   | ToListAsync           | EF traduce y ejecuta la consulta de forma asíncrona.        |
+| 7   | SQL Server            | SELECT con JOIN a Generos y Miembros obtiene cinco filas.   |
+| 8   | Objetos → JSON        | ASP.NET responde 200; ids numéricos se convierten a texto.  |
 
+### Reflexiona y explicación
 
-| Paso | Qué ocurre |
+1. **FK y E1/E4.** La base exige que el miembro exista e impide borrar un proponente con series. Ambos experimentos devolvieron SQL 547.
 
-| --- | --- |
+2. **Favoritos muchos a muchos.** Un miembro tiene varios géneros y un género varios miembros. MiembroGeneros guarda cada pareja una vez con PK compuesta y dos FK.
 
-| Recorrido | 1 Kestrel → 2 MapGet → 3 DbContext inyectado → 4 conexión desde configuración → 5 LINQ OrderBy/Select → 6 ToListAsync → 7 SQL con JOIN → 8 objetos proyectados a JSON. |
+3. **Migraciones y cadena.** El repositorio versiona Up, Down y snapshot para reconstruir el esquema. La cadena vive en user-secrets o entorno; .env y secretos no se entregan.
 
+4. **Select de C#.** EF genera SELECT y JOIN a Generos y Miembros, proyectando solo columnas requeridas. Las consultas y los GET devolvieron los datos esperados.
 
+5. **Cambio sin migración.** El experimento aislado amplió Titulo a 120 manteniendo el snapshot de 100. EF rechazó Migrate con PendingModelChangesWarning. El modelo entregado conserva 100.
 
-### Respuestas y explicación
+6. **Cliente y .NET.** Para los dos GET cambiaría VITE_API_URL; ids y campos tienen los mismos tipos. Para CRUD faltan rutas .NET, por eso el cliente completo continúa usando Express.
 
-
-
-Una FK garantiza la existencia del miembro; Restrict protege registros referenciados. generosFavoritos necesita tabla intermedia por ser muchos a muchos. Migraciones se versionan; conexión vive en user-secrets. Select construye el contrato y EF lo traduce a SQL. Cambiar el modelo requiere migración. El cliente completo sigue usando Express porque .NET solo tiene dos GET.
-
-
+Correo único → IX_Miembros_Correo. Referencia miembroId → FK_Series_Miembros_MiembroId. Enum estado → CK_Series_Estado. Arreglo generosFavoritos → MiembroGeneros.
 
 ### Experimentos y observaciones
 
+Ejecutados los seis experimentos: E1 FK=547, E2 UNIQUE=2601, E3 CHECK=547 y E4 RESTRICT=547, con rollback. El cambio de longitud sin migración fue rechazado por EF. Las dos migraciones reconstruyeron una base nueva con cinco series y cuatro miembros; se eliminó únicamente esa base desechable. La base del laboratorio permaneció intacta. Registro: pruebas-sql.json. Extra de apagar el servicio y reto opcional de calificaciones: no realizados.
 
+### Capturas del resultado acumulativo
 
-E1 FK inexistente: rechazo. E2 correo duplicado: rechazo. E3 estado inválido: rechazo. E4 borrar proponente: rechazo. 12.5 cambio sin migración: detectar desajuste. 12.6 recreación de base: no ejecutada; requiere base aislada y migraciones. No se afirma haber realizado estos experimentos.
+![19. EF Core y SQL Server](capturas/13-net-series.png)
 
+![19. EF Core y SQL Server](capturas/14-net-miembros.png)
 
+## 20. De HTML, Bootstrap y JavaScript a React — Pura Vida Tours
 
-**Captura:** pendiente de ejecución real; no se adjunta evidencia simulada.
+Código: `proyectos-base/pura-vida-tours/parte1-html` y `parte2-react`.
+
+### Explique el recorrido
+
+| #   | HTML y JavaScript                                          | React                                                                    |
+| --- | ---------------------------------------------------------- | ------------------------------------------------------------------------ |
+| 1   | index.html carga Bootstrap y estilos propios.              | main.jsx importa Bootstrap antes del CSS propio.                         |
+| 2   | DOMContentLoaded llama crearMenu, crearCards y crearTabla. | createRoot dibuja App.                                                   |
+| 3   | getElementById obtiene los contenedores.                   | Navbar, Hero, ListaTours, TablaReservas y Footer delimitan cada sección. |
+| 4   | forEach crea elementos y appendChild los agrega.           | map retorna elementos JSX con key estable.                               |
+| 5   | obtenerColorEstado elige el badge.                         | Se conserva la función JavaScript de colores.                            |
+
+### Preguntas de reflexión
+
+1. **Bootstrap compilado.** Permite empezar sin configurar Sass; las variables CSS bastan para personalizar el color. Sass conviene cuando se necesitan personalizaciones del framework antes de compilar o reducir componentes incluidos.
+2. **getElementById.** En HTML se manipula el contenedor directamente. React recibe una descripción JSX y administra sus elementos; solo el montaje necesita localizar root.
+3. **forEach y map.** forEach ejecuta acciones y no devuelve la lista transformada. map devuelve los elementos que JSX puede presentar.
+4. **key.** Identifica un hermano de forma única y estable. Repetirla puede provocar advertencias y reconciliación incorrecta.
+5. **Limitación sin props.** Los datos están dentro de cada componente; para reutilizar una misma tarjeta con datos recibidos habría que introducir props, tema de la siguiente etapa.
+
+### Experimentos y observaciones
+
+Ejecutado: ambas versiones mostraron cuatro enlaces, tres tours y cuatro reservas con estados Confirmada, Pendiente y Cancelada. La versión React compiló correctamente. Las fotografías de ejemplo cargaron del servicio indicado en la guía. No se agregaron los cinco ejercicios adicionales a la versión base. También se probaron ambas versiones con viewport de 390 px: las tarjetas quedaron en una columna y el botón de menú abrió los cuatro enlaces.
+
+![Tours React](capturas/20-tours-react.png)
+
+![Tours HTML](capturas/21-tours-html.png)
+
+![Tours React móvil](capturas/24-tours-react-movil.png)
+
+![Tours HTML móvil](capturas/25-tours-html-movil.png)

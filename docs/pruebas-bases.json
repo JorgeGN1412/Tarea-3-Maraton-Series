@@ -1,0 +1,50 @@
+{
+  "fecha": "2026-11-22T22:54:50.112Z",
+  "resultados": [
+    {
+      "carpeta": ".",
+      "comando": "npm install --no-audit --no-fund",
+      "aprobada": true
+    },
+    {
+      "carpeta": "proyectos-base/conceptos-react",
+      "comando": "npm install --no-audit --no-fund",
+      "aprobada": true
+    },
+    {
+      "carpeta": "proyectos-base/conceptos-react",
+      "comando": "npm run build",
+      "aprobada": true
+    },
+    {
+      "carpeta": "proyectos-base/conceptos-react",
+      "comando": "npm run lint",
+      "aprobada": true
+    },
+    {
+      "carpeta": "proyectos-base/solicitudes/parte2-react",
+      "comando": "npm install --no-audit --no-fund",
+      "aprobada": true
+    },
+    {
+      "carpeta": "proyectos-base/solicitudes/parte2-react",
+      "comando": "npm run build",
+      "aprobada": true
+    },
+    {
+      "carpeta": "proyectos-base/series-js",
+      "comando": "npm install --no-audit --no-fund",
+      "aprobada": true
+    },
+    {
+      "carpeta": "proyectos-base/pura-vida-tours/parte2-react",
+      "comando": "npm install --no-audit --no-fund",
+      "aprobada": true
+    },
+    {
+      "carpeta": "proyectos-base/pura-vida-tours/parte2-react",
+      "comando": "npm run build",
+      "aprobada": true
+    }
+  ]
+}

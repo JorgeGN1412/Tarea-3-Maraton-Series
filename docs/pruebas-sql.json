@@ -1,0 +1,130 @@
+{
+  "fecha": "2026-11-22T16:54:35.2519811-06:00",
+  "resultados": [
+    {
+      "prueba": "Conteos",
+      "aprobada": true,
+      "series": 5,
+      "miembros": 4,
+      "favoritos": 6,
+      "migraciones": 2
+    },
+    {
+      "prueba": "Consulta SQL",
+      "aprobada": true,
+      "consulta": "SELECT s.Titulo,g.Nombre AS Genero,m.Nombre AS Miembro FROM Series s JOIN Generos g ON g.Id=s.GeneroId JOIN Miembros m ON m.Id=s.MiembroId ORDER BY s.Id",
+      "filas": [
+        {
+          "Titulo": "Dark",
+          "Genero": "Ciencia ficci\u00F3n",
+          "Miembro": "Ana"
+        },
+        {
+          "Titulo": "The Office",
+          "Genero": "Comedia",
+          "Miembro": "Luis"
+        },
+        {
+          "Titulo": "Arcane",
+          "Genero": "Animaci\u00F3n",
+          "Miembro": "Sof\u00EDa"
+        },
+        {
+          "Titulo": "Chernobyl",
+          "Genero": "Drama",
+          "Miembro": "Diego"
+        },
+        {
+          "Titulo": "Planeta Tierra",
+          "Genero": "Documental",
+          "Miembro": "Ana"
+        }
+      ]
+    },
+    {
+      "prueba": "Consulta SQL",
+      "aprobada": true,
+      "consulta": "SELECT Estado,COUNT(*) AS Cantidad FROM Series GROUP BY Estado",
+      "filas": [
+        {
+          "Estado": "Por ver",
+          "Cantidad": 2
+        },
+        {
+          "Estado": "Viendo",
+          "Cantidad": 1
+        },
+        {
+          "Estado": "Vista",
+          "Cantidad": 2
+        }
+      ]
+    },
+    {
+      "prueba": "Consulta SQL",
+      "aprobada": true,
+      "consulta": "SELECT m.Nombre,g.Nombre AS Genero FROM MiembroGeneros mg JOIN Miembros m ON m.Id=mg.MiembroId JOIN Generos g ON g.Id=mg.GeneroId ORDER BY m.Nombre,g.Nombre",
+      "filas": [
+        {
+          "Nombre": "Ana",
+          "Genero": "Ciencia ficci\u00F3n"
+        },
+        {
+          "Nombre": "Ana",
+          "Genero": "Documental"
+        },
+        {
+          "Nombre": "Diego",
+          "Genero": "Drama"
+        },
+        {
+          "Nombre": "Luis",
+          "Genero": "Comedia"
+        },
+        {
+          "Nombre": "Sof\u00EDa",
+          "Genero": "Animaci\u00F3n"
+        },
+        {
+          "Nombre": "Sof\u00EDa",
+          "Genero": "Drama"
+        }
+      ]
+    },
+    {
+      "prueba": "E1_FK",
+      "aprobada": true,
+      "codigoSql": 547,
+      "observacion": "The INSERT statement conflicted with the FOREIGN KEY constraint \u0022FK_Series_Miembros_MiembroId\u0022. The conflict occurred in database \u0022Maraton_Tarea3_Jorge\u0022, table \u0022dbo.Miembros\u0022, column \u0027Id\u0027.\r\nThe statement has been terminated."
+    },
+    {
+      "prueba": "E2_UNIQUE",
+      "aprobada": true,
+      "codigoSql": 2601,
+      "observacion": "Cannot insert duplicate key row in object \u0027dbo.Miembros\u0027 with unique index \u0027IX_Miembros_Correo\u0027. The duplicate key value is (ana@club.com).\r\nThe statement has been terminated."
+    },
+    {
+      "prueba": "E3_CHECK",
+      "aprobada": true,
+      "codigoSql": 547,
+      "observacion": "The INSERT statement conflicted with the CHECK constraint \u0022CK_Series_Estado\u0022. The conflict occurred in database \u0022Maraton_Tarea3_Jorge\u0022, table \u0022dbo.Series\u0022, column \u0027Estado\u0027.\r\nThe statement has been terminated."
+    },
+    {
+      "prueba": "E4_RESTRICT",
+      "aprobada": true,
+      "codigoSql": 547,
+      "observacion": "The DELETE statement conflicted with the REFERENCE constraint \u0022FK_Series_Miembros_MiembroId\u0022. The conflict occurred in database \u0022Maraton_Tarea3_Jorge\u0022, table \u0022dbo.Series\u0022, column \u0027MiembroId\u0027.\r\nThe statement has been terminated."
+    },
+    {
+      "prueba": "Reconstruccion_aislada",
+      "aprobada": true,
+      "series": 5,
+      "miembros": 4
+    },
+    {
+      "prueba": "Cambio_sin_migracion",
+      "aprobada": true,
+      "observacion": "An error was generated for warning \u0027Microsoft.EntityFrameworkCore.Migrations.PendingModelChangesWarning\u0027: The model for context \u0027MaratonContext\u0027 has pending changes. Add a new migration before updating the database. See https://aka.ms/efcore-docs-pending-changes. This exception can be suppressed or logged by passing event ID \u0027RelationalEventId.PendingModelChangesWarning\u0027 to the \u0027ConfigureWarnings\u0027 method in \u0027DbContext.OnConfiguring\u0027 or \u0027AddDbContext\u0027."
+    }
+  ]
+}
