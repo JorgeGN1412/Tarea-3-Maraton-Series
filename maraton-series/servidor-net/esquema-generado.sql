@@ -111,4 +111,3 @@ VALUES (N'20261122221350_GenerosFavoritos', N'10.0.14');
 
 COMMIT;
 GO
-
