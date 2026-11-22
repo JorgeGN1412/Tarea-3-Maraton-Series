@@ -1,26 +1,10 @@
-// ListaSeries.jsx
-// Dibuja una TarjetaSerie por serie, o un mensaje si la lista está vacía.
-
-import TarjetaSerie from './TarjetaSerie.jsx'
-
-function ListaSeries({ series, onAvanzar, onQuitar }) {
-  if (series.length === 0) {
-    return (
-      <div className="alert alert-info mb-0">
-        Ninguna serie coincide con los filtros.
-      </div>
-    )
-  }
-
-  return (
-    <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
-      {series.map((serie) => (
-        <div className="col" key={serie.id}>
-          <TarjetaSerie serie={serie} onAvanzar={onAvanzar} onQuitar={onQuitar} />
-        </div>
-      ))}
-    </div>
-  )
+import TarjetaSerie from './TarjetaSerie.jsx';
+// La key usa el identificador persistente, nunca la posición del arreglo.
+export default function ListaSeries({ series, onAvanzar, onQuitar, ocupados = [] }) {
+  if (!series.length) return <p role="status">Ninguna serie coincide con los filtros.</p>;
+  return <div className="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-3">
+    {series.map(serie => <div className="col" key={serie._id}>
+      <TarjetaSerie serie={serie} onAvanzar={onAvanzar} onQuitar={onQuitar} ocupado={ocupados.includes(serie._id)} />
+    </div>)}
+  </div>;
 }
-
-export default ListaSeries

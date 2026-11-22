@@ -1,31 +1,15 @@
-// TarjetaSerie.jsx
-// Muestra una serie. Recibe dos props de tipo función: onAvanzar y onQuitar.
-// No cambia el estado: le avisa al padre (App) qué pasó.
-
-import { claseEstado } from '../../utils/series.js'
-
-function TarjetaSerie({ serie, onAvanzar, onQuitar }) {
-  return (
-    <article className="card h-100 tarjeta-serie">
-      <div className="card-body d-flex flex-column">
-        <span className={'badge align-self-start mb-2 ' + claseEstado(serie.estado)}>
-          {serie.estado}
-        </span>
-        <h3 className="h6 card-title">{serie.titulo}</h3>
-        <p className="card-text small text-secondary mb-3">
-          {serie.genero} · {serie.temporadas} {serie.temporadas === 1 ? 'temporada' : 'temporadas'} · propuesta por {serie.miembro}
-        </p>
-        <div className="mt-auto d-flex gap-2">
-          <button className="btn btn-sm btn-primary" onClick={() => onAvanzar(serie.id)}>
-            Cambiar estado
-          </button>
-          <button className="btn btn-sm btn-outline-danger" onClick={() => onQuitar(serie.id)}>
-            Quitar
-          </button>
-        </div>
-      </div>
-    </article>
-  )
+import { Link } from 'react-router';
+// La tarjeta no guarda datos: informa al padre mediante funciones recibidas por props.
+export default function TarjetaSerie({ serie, onAvanzar, onQuitar, ocupado }) {
+  const color = { 'Por ver': 'secondary', Viendo: 'warning', Vista: 'success' }[serie.estado];
+  return <article className="card h-100"><div className="card-body">
+    <span className={'badge text-bg-' + color}>{serie.estado}</span>
+    <h2 className="h5 mt-3"><Link to={'/series/' + serie._id}>{serie.titulo}</Link></h2>
+    <p>{serie.genero} · {serie.temporadas} {serie.temporadas === 1 ? 'temporada' : 'temporadas'}</p>
+    <p className="text-secondary">Propuesta por {serie.miembro}</p>
+    <div className="d-flex gap-2 flex-wrap">
+      <button className="btn btn-outline-primary btn-sm" type="button" disabled={ocupado} onClick={() => onAvanzar(serie._id)}>Cambiar estado</button>
+      <button className="btn btn-outline-danger btn-sm" type="button" disabled={ocupado} onClick={() => onQuitar(serie._id)}>Quitar</button>
+    </div>
+  </div></article>;
 }
-
-export default TarjetaSerie
