@@ -1,0 +1,1 @@
+export default function EncabezadoConsulta(){return <header className="encabezado"><span>Mesa de ayuda</span><h1>Consulta de solicitudes</h1><p>Seleccione una prioridad para consultar las solicitudes.</p></header>;}
