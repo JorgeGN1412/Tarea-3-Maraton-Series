@@ -7,9 +7,16 @@ import * as C5 from './conceptos/06-usestate/index.jsx';
 import * as C6 from './conceptos/07-inmutabilidad/index.jsx';
 import * as C7 from './conceptos/08-estado-elevado/index.jsx';
 import * as C8 from './conceptos/09-estado-derivado/index.jsx';
+import E0 from './conceptos/01-props/EjercicioProps.jsx';
+import E1 from './conceptos/02-children/EjercicioChildren.jsx';
+import E2 from './conceptos/03-listas/EjercicioListas.jsx';
+import E3 from './conceptos/04-condicional/EjercicioCondicional.jsx';
+import E5 from './conceptos/06-usestate/EjercicioUseState.jsx';
+import E7 from './conceptos/08-estado-elevado/EjercicioEstadoElevado.jsx';
+import E8 from './conceptos/09-estado-derivado/EjercicioEstadoDerivado.jsx';
 import Header from './componentes/Header.jsx';
 import Footer from './componentes/Footer.jsx';
 const nombres=["Props","Children","Listas","Condicionales","Eventos","useState","Inmutabilidad","Estado elevado","Estado derivado"];
 const bloques=[C0,C1,C2,C3,C4,C5,C6,C7,C8];
-// Cada concepto separa la demostración del ejercicio para poder explicarlos.
-export default function App(){return <><Header conceptos={nombres}/><main>{bloques.map((C,i)=><section key={nombres[i]} id={'concepto-'+(i+1)}><h2>{i+1}. {nombres[i]}</h2><h3>Ejemplo</h3><C.Ejemplo/><h3>Ejercicio</h3><C.Ejercicio/></section>)}</main><Footer/></>;}
+const ejercicios=[E0,E1,E2,E3,C4.Ejercicio,E5,C6.Ejercicio,E7,E8];
+export default function App(){return <><Header conceptos={nombres}/><main>{bloques.map((C,i)=>{const Ejercicio=ejercicios[i];return <section key={nombres[i]} id={'concepto-'+(i+1)}><h2>{i+1}. {nombres[i]}</h2><h3>Ejemplo</h3><C.Ejemplo/><h3>Ejercicio</h3><Ejercicio/></section>;})}</main><Footer/></>;}

@@ -1,0 +1,2 @@
+import {tecnicos} from '../../data/tecnicos.js';
+export default function EjercicioListas(){return <table className="tabla"><thead><tr><th>Nombre</th><th>Área</th><th>Extensión</th></tr></thead><tbody>{tecnicos.map(t=><tr key={t.id}><td>{t.nombre}</td><td>{t.area}</td><td>{t.extension}</td></tr>)}</tbody></table>;}
