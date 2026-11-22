@@ -1,0 +1,11 @@
+{
+  "name": "series-js",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node servidor-local.js"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.8"
+  }
+}

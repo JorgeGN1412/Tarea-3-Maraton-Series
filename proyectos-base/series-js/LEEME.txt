@@ -1,0 +1,9 @@
+ASSETS — SERIES-JS (consumo de APIs)
+Copie el contenido de esta carpeta dentro de la carpeta series-js,
+siguiendo el paso 2 del laboratorio guiado.
+
+index.html          la página: barra, buscador y formulario de propuesta
+css/estilos.css     estilos propios de las tarjetas
+img/sin-imagen.svg  imagen que se muestra cuando una serie no tiene portada
+
+La carpeta js/ y sus tres archivos se crean en el laboratorio.
