@@ -336,11 +336,11 @@ Código: `maraton-series/servidor/src/miembros`.
 
 ### Experimentos y observaciones
 
-Ejecutado: GET miembros devolvió Ana, Diego, Luis y Sofía en orden y con ids de texto. pruebas-http.json contiene la respuesta Express; la captura .NET muestra el mismo contrato y nombres, con otros valores de id.
+Ejecutado: Express respondió HTTP 200 a GET /api/miembros en el puerto 3001. MongoDB devolvió a Ana, Diego, Luis y Sofía en orden, con ObjectId convertidos a texto. El registro de pruebas HTTP y la captura muestran esa respuesta.
 
 ### Capturas del resultado acumulativo
 
-![12. Conexión con MongoDB y módulo miembros](capturas/14-net-miembros.png)
+![GET /api/miembros en Express con MongoDB](capturas/28-express-miembros.png)
 
 ## 13. Series: listar y crear
 

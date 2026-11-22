@@ -110,7 +110,16 @@ assert.equal((await pedir(api, '/series', 200)).length, iniciales.length);
 const sql = 'http://127.0.0.1:5090/api';
 const sqlMiembros = await pedir(sql, '/miembros', 200);
 const sqlSeries = await pedir(sql, '/series', 200);
-assert.equal(sqlMiembros.length, 4);
+// Comprueba el contrato de miembros en las dos bases antes de comparar sus nombres.
+for (const miembro of [...miembros, ...sqlMiembros]) {
+  assert.deepEqual(Object.keys(miembro).sort(), ['_id', 'nombre']);
+  assert.equal(typeof miembro._id, 'string');
+  assert.equal(typeof miembro.nombre, 'string');
+}
+assert.deepEqual(
+  sqlMiembros.map((miembro) => miembro.nombre),
+  miembros.map((miembro) => miembro.nombre),
+);
 assert.equal(sqlSeries.length, 5);
 for (const s of [...iniciales, ...sqlSeries]) {
   assert.deepEqual(

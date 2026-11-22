@@ -55,3 +55,5 @@ Obtenidas de las aplicaciones ejecutándose. Las primeras doce muestran el banco
 [26-variable-vs-estado.png](26-variable-vs-estado.png)
 
 [27-vscode-sin-errores.png](27-vscode-sin-errores.png)
+
+[28-express-miembros.png](28-express-miembros.png) — GET /api/miembros en Express con MongoDB.

@@ -1,5 +1,5 @@
 {
-  "fecha": "2026-11-22T23:17:06.135Z",
+  "fecha": "2026-11-22T23:38:59.208Z",
   "aprobada": true,
   "resultados": [
     {
@@ -200,13 +200,13 @@
         "genero": "Drama",
         "temporadas": 1,
         "estado": "Por ver",
-        "_id": "6b0377f2d35ed0da2581f56c",
+        "_id": "6b037d13d35ed0da2581f56d",
         "miembroId": "650000000000000000000001",
         "miembro": "Ana"
       }
     },
     {
-      "ruta": "/series/6b0377f2d35ed0da2581f56c",
+      "ruta": "/series/6b037d13d35ed0da2581f56d",
       "metodo": "GET",
       "estado": 200,
       "cuerpo": {
@@ -214,13 +214,13 @@
         "genero": "Drama",
         "temporadas": 1,
         "estado": "Por ver",
-        "_id": "6b0377f2d35ed0da2581f56c",
+        "_id": "6b037d13d35ed0da2581f56d",
         "miembroId": "650000000000000000000001",
         "miembro": "Ana"
       }
     },
     {
-      "ruta": "/series/6b0377f2d35ed0da2581f56c/estado",
+      "ruta": "/series/6b037d13d35ed0da2581f56d/estado",
       "metodo": "PATCH",
       "estado": 400,
       "cuerpo": {
@@ -234,7 +234,7 @@
       }
     },
     {
-      "ruta": "/series/6b0377f2d35ed0da2581f56c/estado",
+      "ruta": "/series/6b037d13d35ed0da2581f56d/estado",
       "metodo": "PATCH",
       "estado": 200,
       "cuerpo": {
@@ -242,13 +242,13 @@
         "genero": "Drama",
         "temporadas": 1,
         "estado": "Viendo",
-        "_id": "6b0377f2d35ed0da2581f56c",
+        "_id": "6b037d13d35ed0da2581f56d",
         "miembroId": "650000000000000000000001",
         "miembro": "Ana"
       }
     },
     {
-      "ruta": "/series/6b0377f2d35ed0da2581f56c",
+      "ruta": "/series/6b037d13d35ed0da2581f56d",
       "metodo": "GET",
       "estado": 200,
       "cuerpo": {
@@ -256,13 +256,13 @@
         "genero": "Drama",
         "temporadas": 1,
         "estado": "Viendo",
-        "_id": "6b0377f2d35ed0da2581f56c",
+        "_id": "6b037d13d35ed0da2581f56d",
         "miembroId": "650000000000000000000001",
         "miembro": "Ana"
       }
     },
     {
-      "ruta": "/series/6b0377f2d35ed0da2581f56c/estado",
+      "ruta": "/series/6b037d13d35ed0da2581f56d/estado",
       "metodo": "PATCH",
       "estado": 200,
       "cuerpo": {
@@ -270,13 +270,13 @@
         "genero": "Drama",
         "temporadas": 1,
         "estado": "Vista",
-        "_id": "6b0377f2d35ed0da2581f56c",
+        "_id": "6b037d13d35ed0da2581f56d",
         "miembroId": "650000000000000000000001",
         "miembro": "Ana"
       }
     },
     {
-      "ruta": "/series/6b0377f2d35ed0da2581f56c",
+      "ruta": "/series/6b037d13d35ed0da2581f56d",
       "metodo": "GET",
       "estado": 200,
       "cuerpo": {
@@ -284,13 +284,13 @@
         "genero": "Drama",
         "temporadas": 1,
         "estado": "Vista",
-        "_id": "6b0377f2d35ed0da2581f56c",
+        "_id": "6b037d13d35ed0da2581f56d",
         "miembroId": "650000000000000000000001",
         "miembro": "Ana"
       }
     },
     {
-      "ruta": "/series/6b0377f2d35ed0da2581f56c/estado",
+      "ruta": "/series/6b037d13d35ed0da2581f56d/estado",
       "metodo": "PATCH",
       "estado": 200,
       "cuerpo": {
@@ -298,13 +298,13 @@
         "genero": "Drama",
         "temporadas": 1,
         "estado": "Por ver",
-        "_id": "6b0377f2d35ed0da2581f56c",
+        "_id": "6b037d13d35ed0da2581f56d",
         "miembroId": "650000000000000000000001",
         "miembro": "Ana"
       }
     },
     {
-      "ruta": "/series/6b0377f2d35ed0da2581f56c",
+      "ruta": "/series/6b037d13d35ed0da2581f56d",
       "metodo": "GET",
       "estado": 200,
       "cuerpo": {
@@ -312,13 +312,13 @@
         "genero": "Drama",
         "temporadas": 1,
         "estado": "Por ver",
-        "_id": "6b0377f2d35ed0da2581f56c",
+        "_id": "6b037d13d35ed0da2581f56d",
         "miembroId": "650000000000000000000001",
         "miembro": "Ana"
       }
     },
     {
-      "ruta": "/series/6b0377f2d35ed0da2581f56c/estado",
+      "ruta": "/series/6b037d13d35ed0da2581f56d/estado",
       "metodo": "PATCH",
       "estado": 200,
       "cuerpo": {
@@ -326,19 +326,19 @@
         "genero": "Drama",
         "temporadas": 1,
         "estado": "Por ver",
-        "_id": "6b0377f2d35ed0da2581f56c",
+        "_id": "6b037d13d35ed0da2581f56d",
         "miembroId": "650000000000000000000001",
         "miembro": "Ana"
       }
     },
     {
-      "ruta": "/series/6b0377f2d35ed0da2581f56c",
+      "ruta": "/series/6b037d13d35ed0da2581f56d",
       "metodo": "DELETE",
       "estado": 204,
       "cuerpo": null
     },
     {
-      "ruta": "/series/6b0377f2d35ed0da2581f56c",
+      "ruta": "/series/6b037d13d35ed0da2581f56d",
       "metodo": "DELETE",
       "estado": 404,
       "cuerpo": {
