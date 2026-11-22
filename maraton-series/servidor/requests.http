@@ -1,0 +1,54 @@
+@api = http://localhost:3000/api
+@serie = 660000000000000000000001
+@miembro = 650000000000000000000001
+
+### Listar miembros: 200
+GET {{api}}/miembros
+
+### Listar series: 200
+GET {{api}}/series
+
+### Detalle: 200
+GET {{api}}/series/{{serie}}
+
+### Id inválido: 400
+GET {{api}}/series/abc
+
+### No encontrada: 404
+GET {{api}}/series/670000000000000000000000
+
+### Crear: 201. Copiar el _id de la respuesta para modificar o eliminar esa nueva serie.
+POST {{api}}/series
+Content-Type: application/json
+
+{"titulo":"Severance","genero":"Drama","temporadas":2,"miembroId":"{{miembro}}"}
+
+### Validación: 400 con detalles por campo
+POST {{api}}/series
+Content-Type: application/json
+
+{"titulo":"","genero":"Otro","temporadas":40,"miembroId":"abc"}
+
+### Estado: 200
+PATCH {{api}}/series/{{serie}}/estado
+Content-Type: application/json
+
+{"estado":"Viendo"}
+
+### Estado inválido: 400
+PATCH {{api}}/series/{{serie}}/estado
+Content-Type: application/json
+
+{"estado":"Terminada"}
+
+### Eliminar: 204. Cambiar el id por la serie de prueba antes de enviarlo.
+DELETE {{api}}/series/PEGUE_ID_DE_LA_SERIE_CREADA
+
+### Ruta inexistente: 404
+GET {{api}}/plataformas
+
+### JSON mal formado: 400
+POST {{api}}/series
+Content-Type: application/json
+
+{"titulo":
