@@ -1,0 +1,7 @@
+@api = http://localhost:5080/api
+### Miembros: 200
+GET {{api}}/miembros
+### Series: 200
+GET {{api}}/series
+### Ruta ausente: 404
+GET {{api}}/plataformas
