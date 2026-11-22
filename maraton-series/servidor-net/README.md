@@ -25,7 +25,7 @@ La fábrica de diseño permite generar migraciones sin arrancar el servidor. No 
 ## Datos y rutas
 GET /api/miembros y GET /api/series proyectan el contrato del API Express.
 Los identificadores numéricos se convierten a texto.
-La respuesta HTTP del proceso aún debe verificarse: las solicitudes realizadas al puerto 5080 agotaron el tiempo de prueba.
+Las dos rutas se verificaron con HTTP 200 en una instancia de diagnóstico en el puerto 5090: cuatro miembros y cinco series, con identificadores de texto. Evidencia: docs/diagnostico-net.json en la raíz del repositorio. Aún debe unificarse el arranque habitual con el puerto documentado 5080.
 Consultar docs/verificacion.md para el estado completo.
 
 ## Dependencia transitiva

@@ -19,7 +19,7 @@
 | Compilación .NET | 0 errores y 0 advertencias |
 | Migraciones | Inicial y GenerosFavoritos generadas por EF Core y aplicadas a Maraton_Tarea3_Jorge |
 | Conteos SQL manuales | 5 filas en Series y 6 en MiembroGeneros, comprobadas con sqlcmd |
-| API .NET en el navegador | Pendiente: las peticiones al puerto 5080 no completaron dentro del tiempo de prueba |
+| API .NET | Verificada desde la terminal normal: raíz, GET miembros y GET series devolvieron 200 en el puerto 5090; 4 miembros y 5 series con identificadores de texto. Evidencia: diagnostico-net.json |
 
 ## Qué significaban los bloqueos anteriores
 Los comandos ejecutados por el asistente tenían restricciones de red y acceso a ciertos directorios.
@@ -44,7 +44,7 @@ El modo normal conserva la conexión en servidor/.env, excluido de Git. Aún fal
 - Separación entre hechos ejecutados y experimentos pendientes.
 
 ## Pendientes antes de entregar
-1. Resolver las respuestas HTTP de .NET en el puerto 5080 y capturar ambos GET.
+1. Unificar el arranque habitual de .NET en el puerto documentado y capturar ambos GET. Los dos GET ya están verificados en 5090; revisar la instancia anterior de 5080 sin atribuirle una causa no comprobada.
 2. Verificar las consultas y los experimentos de restricciones SQL, y agregar su evidencia.
 3. Completar capturas y experimentos de cada laboratorio anterior que la consigna pide por separado.
 4. Ejecutar y cotejar los proyectos base completos, no solo su sintaxis.
