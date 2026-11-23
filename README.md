@@ -106,7 +106,6 @@ reconstruye una base desechable sin borrar la base del laboratorio.
 
 - [Resultados de revisión y pruebas](docs/verificacion.md).
 - [Laboratorios: recorridos, respuestas, capturas y experimentos](docs/laboratorios.md).
-- [Guía para explicar y modificar el código](docs/guia-defensa.md).
 - [Capturas reales](docs/capturas/README.md).
 
 No se versionan node_modules, bin, obj, dist, .env ni archivos de la base local.
